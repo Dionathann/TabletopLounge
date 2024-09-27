@@ -20,4 +20,5 @@ public class GameConfigurationDisplay : MonoBehaviour
 
         playerCountDisplay.text = playerCount.ToString();
     }
+
 }
