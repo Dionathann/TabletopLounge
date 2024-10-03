@@ -43,11 +43,11 @@ public class TheAgentRoleMechanism : MonoBehaviour
             //Debug.Log(character.name + " is " + (character.isAltruistic ? "Altrustic" : "Ordinary"));
             if (character.isAgent)
             {
-                Debug.Log(character.playerName + " is " + " Icognito");
+                Debug.Log(character.playerName + " is The Agent");
             }
             else
             {
-                Debug.Log(character.playerName + " is " + " Ordinary");
+                Debug.Log(character.playerName + " is Police ");
             }
         }
     }

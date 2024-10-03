@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AltruisticRoleMechanism : MonoBehaviour
 {
     [SerializeField] TotalPlayerHolder totalPlayerHolder;
+    [SerializeField] NameHolder nameHolder;
+    [System.Serializable]
     public class AltruisticPlayerData
     {
         public string name;
@@ -23,6 +26,20 @@ public class AltruisticRoleMechanism : MonoBehaviour
 
     public List<string> playerName = new List<string>();
     public List<AltruisticPlayerData> characters = new List<AltruisticPlayerData>();
+
+    public void InitializeGame()
+    {
+        PassListName();
+    }
+
+
+    private void PassListName()
+    {
+        for (int i = 0; i < nameHolder.playerNameList.Count; i++)
+        {
+            playerName.Add(nameHolder.playerNameList[i]);
+        }
+    }
 
     [ContextMenu("Test 3 Player Mode")]
     private void ThreePlayerOnly()
@@ -46,12 +63,12 @@ public class AltruisticRoleMechanism : MonoBehaviour
     [ContextMenu("TestRoleAssigner")]
     private void NormalMode()
     {
-        int currentplayer = totalPlayerHolder.GetPlayerCount();
+        /*int currentplayer = totalPlayerHolder.GetPlayerCount();
         int minplayer = totalPlayerHolder.GetMinPlayer();
         int maxplayer = totalPlayerHolder.GetMaxPlayer();
 
-        if (currentplayer <= minplayer || currentplayer >= maxplayer)
-        return;
+        //if (currentplayer <= minplayer || currentplayer >= maxplayer)
+        //return;*/
 
         characters.Clear();
 

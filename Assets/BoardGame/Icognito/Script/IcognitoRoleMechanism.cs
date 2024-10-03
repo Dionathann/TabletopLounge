@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AltruisticRoleMechanism;
-using UnityEngine.TextCore.Text;
 
 public class IcognitoRoleMechanism : MonoBehaviour
 {

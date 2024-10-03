@@ -82,10 +82,4 @@ public class NameHolder : MonoBehaviour
         playerNameList.Add(name);
     }
 
-
-    public List<string> GetNameList() 
-    {  
-        return playerNameList; 
-    }
-
 }
