@@ -22,21 +22,25 @@ public class NameHolder : MonoBehaviour
         int playernow = totalPlayerHolder.GetPlayerCount();
 
         string inputFieldText = inputField.text;
-        if (!string.IsNullOrEmpty(inputFieldText))
+        if(playerNameList.Count < playernow)
         {
-            if (playerNameList.Contains(inputFieldText))
+            if (!string.IsNullOrEmpty(inputFieldText))
             {
-                Debug.Log("Name Already Exist");
-                return;
-            }
-            else
-            {
-                InstantiateNameInput(inputFieldText);
+                if (playerNameList.Contains(inputFieldText))
+                {
+                    Debug.Log("Name Already Exist");
+                    return;
+                }
+                else
+                {
+                    InstantiateNameInput(inputFieldText);
 
-                Debug.Log("Name Added : " + inputFieldText);
+                    Debug.Log("Name Added : " + inputFieldText);
 
+                }
             }
         }
+        
         inputField.text = string.Empty;
     }
 

@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    private SpriteRenderer rend;
+    private Image RoleImage;
+    public RoleDisplayMechanism roleDisplayMechanism;
 
-    [SerializeField]
-    private Sprite faceSprite, backSprite;
+    //private Sprite faceSprite, backSprite;
 
     private bool coroutineAllowed, facedUp;
 
     // Start is called before the first frame update
     void Start()
     {
-        rend = GetComponent<SpriteRenderer>();
-        rend.sprite = backSprite;
+        RoleImage = GetComponent<Image>();
+        RoleImage.sprite = roleDisplayMechanism.backCard;
         coroutineAllowed = true;
         facedUp = false;
     }
 
-    private void OnMouseDown()
+    public void Toggle()
     {
         if (coroutineAllowed)
         {
@@ -39,7 +40,8 @@ public class Card : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
                 {
-                    rend.sprite = faceSprite;
+                    roleDisplayMechanism.GetPlayerRole(roleDisplayMechanism.GetCurrentPlayerIndex());
+                    //rend.sprite = faceSprite;
                 }
                 yield return new WaitForSeconds(0.01f);
             }
@@ -52,7 +54,7 @@ public class Card : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
                 {
-                    rend.sprite = backSprite;
+                    RoleImage.sprite = roleDisplayMechanism.backCard;
                 }
                 yield return new WaitForSeconds(0.01f);
             }
@@ -61,5 +63,10 @@ public class Card : MonoBehaviour
         coroutineAllowed = true;
 
         facedUp = !facedUp;
+    }
+
+    public void ForceFaceDownCard()
+    {
+        facedUp = false;
     }
 }

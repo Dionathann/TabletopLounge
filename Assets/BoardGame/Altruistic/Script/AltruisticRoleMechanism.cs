@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
 
 public class AltruisticRoleMechanism : MonoBehaviour
 {
     [SerializeField] TotalPlayerHolder totalPlayerHolder;
     [SerializeField] NameHolder nameHolder;
+    [SerializeField] TMP_Dropdown gameMode;
     [System.Serializable]
     public class AltruisticPlayerData
     {
@@ -14,27 +15,31 @@ public class AltruisticRoleMechanism : MonoBehaviour
         public bool isMaster;
         public bool isAltruistic;
         public bool isOrdinary;
+        public bool isSupport;
 
-        public AltruisticPlayerData(string name, bool master, bool altruistic, bool ordinary)
+        public AltruisticPlayerData(string name, bool master, bool altruistic, bool ordinary, bool support)
         {
             this.name = name;
             this.isMaster = master;
             this.isAltruistic = altruistic;
             this.isOrdinary = ordinary;
+            this.isSupport = support;
         }
     }
 
     public List<string> playerName = new List<string>();
     public List<AltruisticPlayerData> characters = new List<AltruisticPlayerData>();
 
-    public void InitializeGame()
+    /*public void InitializeGame()
     {
         PassListName();
-    }
+        GetGameMode();
+    }*/
 
-
-    private void PassListName()
+    public void PassListName()
     {
+        playerName.Clear();
+
         for (int i = 0; i < nameHolder.playerNameList.Count; i++)
         {
             playerName.Add(nameHolder.playerNameList[i]);
@@ -42,7 +47,7 @@ public class AltruisticRoleMechanism : MonoBehaviour
     }
 
     [ContextMenu("Test 3 Player Mode")]
-    private void ThreePlayerOnly()
+    public void ThreePlayerMode()
     {
         if (totalPlayerHolder.GetPlayerCount() != 3)
             return;
@@ -56,20 +61,13 @@ public class AltruisticRoleMechanism : MonoBehaviour
             bool isMaster = (i == masterIndex);
             bool isOrdinary = !isMaster;
 
-            characters.Add(new AltruisticPlayerData(playerName[i], isMaster, false, isOrdinary));
+            characters.Add(new AltruisticPlayerData(playerName[i], isMaster, false, isOrdinary, false));
         }
     }
 
     [ContextMenu("TestRoleAssigner")]
-    private void NormalMode()
+    public void NormalMode()
     {
-        /*int currentplayer = totalPlayerHolder.GetPlayerCount();
-        int minplayer = totalPlayerHolder.GetMinPlayer();
-        int maxplayer = totalPlayerHolder.GetMaxPlayer();
-
-        //if (currentplayer <= minplayer || currentplayer >= maxplayer)
-        //return;*/
-
         characters.Clear();
 
         int masterIndex = Random.Range(0, playerName.Count);
@@ -88,7 +86,36 @@ public class AltruisticRoleMechanism : MonoBehaviour
             bool isAltruistic = (i == altruisticIndex);
             bool isOrdinary = !isMaster && !isAltruistic;
 
-            characters.Add(new AltruisticPlayerData(playerName[i], isMaster, isAltruistic, isOrdinary));
+            characters.Add(new AltruisticPlayerData(playerName[i], isMaster, isAltruistic, isOrdinary, false));
+        }
+    }
+
+    public void AdditionalRole()
+    {
+        characters.Clear();
+
+        int masterIndex = Random.Range(0, playerName.Count);
+        int altruisticIndex, supportIndex;
+
+        do
+        {
+            altruisticIndex = Random.Range(0, playerName.Count);
+        }while (altruisticIndex == masterIndex);
+
+        do
+        {
+            supportIndex = Random.Range(0, playerName.Count);
+        }while( supportIndex == masterIndex && supportIndex == altruisticIndex);
+
+        for (int i = 0; i < playerName.Count; i++)
+        {
+            //Assign role
+            bool isMaster = (i == masterIndex);
+            bool isAltruistic = (i == altruisticIndex);
+            bool isSupport = (i == supportIndex);
+            bool isOrdinary = !isMaster && !isAltruistic && !isSupport;
+
+            characters.Add(new AltruisticPlayerData(playerName[i], isMaster, isAltruistic, isOrdinary, isSupport));
         }
     }
 
@@ -112,5 +139,20 @@ public class AltruisticRoleMechanism : MonoBehaviour
             }
         }
     }
+
+    public bool PlayerCheck()
+    {
+        if(playerName.Count != totalPlayerHolder.GetPlayerCount())
+        {
+            Debug.Log("Player Doesnt Same");
+            return false;
+        }
+        else
+        {
+            Debug.Log("OK!");
+            return true;
+        }
+    }
+
 }
 
