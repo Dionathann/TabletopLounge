@@ -17,12 +17,14 @@ public class NameHolder : MonoBehaviour
     public GameObject nameBox;
     private List<GameObject> instantiatedNameObjects = new List<GameObject>();
 
+    [SerializeField] TextMeshProUGUI totalPlayerDisplay;
     public void ConfirmAddName()
     {
-        int playernow = totalPlayerHolder.GetPlayerCount();
+        //int playernow = totalPlayerHolder.GetPlayerCount();
 
         string inputFieldText = inputField.text;
-        if(playerNameList.Count < playernow)
+
+        if(playerNameList.Count < totalPlayerHolder.GetMaxPlayer())
         {
             if (!string.IsNullOrEmpty(inputFieldText))
             {
@@ -35,6 +37,8 @@ public class NameHolder : MonoBehaviour
                 {
                     InstantiateNameInput(inputFieldText);
 
+                    totalPlayerHolder.PlayerIncrement();
+
                     Debug.Log("Name Added : " + inputFieldText);
 
                 }
@@ -42,6 +46,10 @@ public class NameHolder : MonoBehaviour
         }
         
         inputField.text = string.Empty;
+
+        DisplayPlayerCounter();
+
+
     }
 
     public void InstantiateNameInput(string name)
@@ -66,7 +74,16 @@ public class NameHolder : MonoBehaviour
             deleteButton.onClick.AddListener(() => RemoveName(ObjectToDelete));
 
             deleteButton.onClick.AddListener(() => RemoveNameFromList(name));
+
+            deleteButton.onClick.AddListener(() => totalPlayerHolder.PlayerDecrement());
+
+            deleteButton.onClick.AddListener(() => DisplayPlayerCounter());
         }
+    }
+
+    public void DisplayPlayerCounter()
+    {
+        totalPlayerDisplay.text = totalPlayerHolder.GetPlayerCount().ToString();
     }
 
     private void RemoveNameFromList(string name)

@@ -7,9 +7,9 @@ public class TotalPlayerHolder : MonoBehaviour
 {
 
     private int maxPlayer = 8;
-    private int minPlayer = 3;
+    private int minPlayer = 0;
 
-    private int playerCount = 3;
+    private int playerCount = 0;
     public int GetPlayerCount()
     {
         return playerCount;

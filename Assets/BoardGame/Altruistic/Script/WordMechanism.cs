@@ -7,16 +7,14 @@ public class WordMechanism : MonoBehaviour
 {
     [SerializeField] WordData wordData;
 
-    [SerializeField] TextMeshProUGUI wordTextEnglish;
-    [SerializeField] TextMeshProUGUI wordTextIndonesia;
 
     private int currentIndex;
 
     [ContextMenu("Show the Word")]
-    private void GetWord()
+    public void GetWord()
     {
         RandomizeWordIndex();
-        DisplayWord();
+        //DisplayWord();
     }
 
     private void RandomizeWordIndex()
@@ -24,23 +22,26 @@ public class WordMechanism : MonoBehaviour
         currentIndex = -1;
 
         currentIndex = Random.Range(0, wordData.wordsListIndonesia.Count);
-
-        Debug.Log(currentIndex);
     }
-    private string GetWordEnglish()
+
+    public string GetWordEnglish()
     {
         return wordData.wordsListEnglish[currentIndex];
     }
 
-    private string GetWordIndonesia()
+    public string GetWordIndonesia()
     {
         return wordData.wordsListIndonesia[currentIndex];
     }
 
-
-    private void DisplayWord()
+    /*private void DisplayWord()
     {
         wordTextEnglish.text = GetWordEnglish();
         wordTextIndonesia.text = GetWordIndonesia();
+    }*/
+
+    public int GetCurrentWordIndex()
+    {
+        return currentIndex;
     }
 }

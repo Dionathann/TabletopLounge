@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static AltruisticRoleMechanism;
 
 public class RoleDisplayMechanism : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class RoleDisplayMechanism : MonoBehaviour
     [SerializeField] NameHolder nameHolder;
     [SerializeField] WarningDisplay warningDisplay;
     [SerializeField] Card card;
+    [SerializeField] WordMechanism wordMechanism;
+
     [Header("Image Asset")]
     public Sprite backCard;
     [SerializeField] Sprite masterCardRole;
@@ -26,10 +29,19 @@ public class RoleDisplayMechanism : MonoBehaviour
     [SerializeField] Image RoleCardImage;
     [SerializeField] GameObject GameConfigurationCanvasPrefab;
     [SerializeField] GameObject RoleDisplayAltruisticPrefab;
-    [SerializeField] Button nextButton;
+    public Button nextButton;
     [SerializeField] TMP_Dropdown gameModeDropdown;
     [SerializeField] GameObject confirmationPanel;
     [SerializeField] TextMeshProUGUI confirmationPlayerName;
+    [SerializeField] GameObject confirmationScreen;
+
+    [SerializeField] GameObject wordBoxPanel;
+    [SerializeField] TextMeshProUGUI altruisticWordIndo;
+    [SerializeField] TextMeshProUGUI altruisticWordEnglish;
+
+    [SerializeField] GameObject customMasterNameDisplayer;
+    [SerializeField] GameObject playerNameBox;
+    [SerializeField] Transform customMasterNameHolder;
 
     [Header("FlipCard Variable")]
     private Quaternion originalRotation;
@@ -38,6 +50,7 @@ public class RoleDisplayMechanism : MonoBehaviour
     [SerializeField] RectTransform imageRectTransform;
 
     private bool gameModeCheck;
+
 
     public void Inizialize()
     {
@@ -59,9 +72,10 @@ public class RoleDisplayMechanism : MonoBehaviour
             return;
         }
         ///////////////////////////////////////////////////////////////////////////////
-        
 
         GameConfigurationCanvasPrefab.SetActive(false);
+
+        
         RoleDisplayAltruisticPrefab.SetActive(true);
 
         //////////////////////////////////////////////////////////////////////////////
@@ -70,21 +84,42 @@ public class RoleDisplayMechanism : MonoBehaviour
 
         //////////////////////////////////////////////////////////////////////////////
 
-        currentIndexPlayer = 0;
-        RoleCardImage.sprite = backCard;
-        nextButton.interactable = false;
-    }
+        
+        wordMechanism.GetWord();
 
+        currentIndexPlayer = 0;
+        
+        RoleCardImage.sprite = backCard;
+        
+        nextButton.interactable = false;
+
+        if (gameModeDropdown.value == 3)
+        {
+            customMasterNameDisplayer.SetActive(true);
+        }
+        else
+        {
+            nameText.text = altruisticRoleMechanism.characters[currentIndexPlayer].name;
+
+            ShowPlayerConfirmation();
+        }
+
+        //nameText.text = altruisticRoleMechanism.characters[currentIndexPlayer].name;
+
+    }
+/*
     private void Start()
     {
         nameText.text = altruisticRoleMechanism.characters[currentIndexPlayer].name;
 
         ShowPlayerConfirmation();
-    }
+    }*/
 
     public void ShowPlayerConfirmation()
     {
         confirmationPlayerName.text = altruisticRoleMechanism.characters[currentIndexPlayer].name;
+
+        confirmationPanel.SetActive(true);
     }
 
     public void HidePlayerConfirmation()
@@ -95,19 +130,32 @@ public class RoleDisplayMechanism : MonoBehaviour
     [ContextMenu("Next Player")]
     public void NextPlayerButton()
     {
+        if(wordBoxPanel == true)
+        {
+            wordBoxPanel.SetActive(false);
+        }
+
         if(currentIndexPlayer >= altruisticRoleMechanism.characters.Count - 1)
         {
             Debug.Log("Role Finish");
+            RoleDisplayAltruisticPrefab.SetActive(false);
+            confirmationScreen.SetActive(true);
             return;
         }
 
         currentIndexPlayer++;
+
         Debug.Log("show Role");
+
         card.ForceFaceDownCard();
+
+        nextButton.interactable = false;
+
         RoleCardImage.sprite = backCard;
+
         nameText.text = altruisticRoleMechanism.characters[currentIndexPlayer].name;
+
         ShowPlayerConfirmation();
-        confirmationPanel.SetActive(true);
 
     }
 
@@ -161,6 +209,23 @@ public class RoleDisplayMechanism : MonoBehaviour
                 return;
             }
         }
+        if (gameModeValue == 3)
+        {
+            if (nameHolder.playerNameList.Count >= 4)
+            {
+                altruisticRoleMechanism.characters.Clear();
+
+                MasterChooserPLayerName();
+
+                Debug.Log("Normal Mode");
+            }
+            else
+            {
+                warningDisplay.SetWarningMessage("Normal Mode Cant Exceuted, Player Must More than 3");
+                Debug.Log("Normal Mode Cant Exceuted");
+                return;
+            }
+        }
         gameModeCheck = true;
     }
 
@@ -174,7 +239,10 @@ public class RoleDisplayMechanism : MonoBehaviour
         }
         if (altruisticRoleMechanism.characters[index].isAltruistic)
         {
+            ShowWordForAltruistic();
+
             RoleCardImage.sprite = altruisticCardRole;
+
             Debug.Log(altruisticRoleMechanism.characters[index].name + " is Altruistic");
         }
         if (altruisticRoleMechanism.characters[index].isOrdinary)
@@ -188,6 +256,72 @@ public class RoleDisplayMechanism : MonoBehaviour
         }
     }
 
+    private void ShowWordForAltruistic()
+    {
+        wordBoxPanel.SetActive(true);
+
+        string indonesiaWord = wordMechanism.GetWordIndonesia();
+        string englishWord = wordMechanism.GetWordEnglish();
+
+        altruisticWordIndo.text = indonesiaWord;
+        altruisticWordEnglish.text = englishWord;
+
+        Debug.Log("Show Word For Altruistic");
+
+    }
+
+    public void MasterChooserPLayerName()
+    {
+        for (int i = 0; i < altruisticRoleMechanism.playerName.Count; i++)
+        {
+            
+            DisplayName(altruisticRoleMechanism.playerName[i], i);
+            
+        }
+    }
+
+    private void DisplayName(string name, int index)
+    {
+        var newGameObject = Instantiate(playerNameBox, customMasterNameHolder);
+
+        TextMeshProUGUI textInside = newGameObject.GetComponentInChildren<TextMeshProUGUI>();
+
+        if (textInside != null)
+        {
+            textInside.text = name;
+        }
+
+        Button button = newGameObject.GetComponentInChildren<Button>();
+
+        if (button != null)
+        {
+            button.onClick.AddListener(() => OnButtonClick(index));
+        }
+
+        GameObjectIndex indexComponent = newGameObject.AddComponent<GameObjectIndex>();
+
+        indexComponent.index = index;
+    }
+
+    public void OnButtonClick(int index)
+    {
+        Debug.Log("Player " + index + " clicked");
+
+        SetMaster(index);
+
+        altruisticRoleMechanism.MasterPickUp(index);
+
+        customMasterNameDisplayer.SetActive(false);
+
+        nameText.text = altruisticRoleMechanism.characters[currentIndexPlayer].name;
+
+        ShowPlayerConfirmation();
+    }
+
+    private void SetMaster(int newIndex)
+    {
+        altruisticRoleMechanism.characters.Add(new AltruisticPlayerData(altruisticRoleMechanism.playerName[newIndex], true, false, false, false));
+    }
 
     public int GetCurrentPlayerIndex()
     {

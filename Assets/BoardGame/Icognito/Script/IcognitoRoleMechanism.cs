@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class IcognitoRoleMechanism : MonoBehaviour
 {
+    [SerializeField] NameHolder nameHolder;
+    [SerializeField] TotalPlayerHolder totalPlayerHolder;
+    [SerializeField] IcognitoImageData icognitoImageData;
+
+    public int iconIndex;
+
+    [System.Serializable]
     public class IcognitoPlayerData
     {
         public string name;
@@ -19,6 +26,16 @@ public class IcognitoRoleMechanism : MonoBehaviour
     public List<string> playerName = new List<string>();
     public List<IcognitoPlayerData> playerData = new List<IcognitoPlayerData>();
 
+    public void PassListName()
+    {
+        playerName.Clear();
+
+        for (int i = 0; i < nameHolder.playerNameList.Count; i++)
+        {
+            playerName.Add(nameHolder.playerNameList[i]);
+        }
+    }
+
     [ContextMenu("TestRoleAssigner")]
     public void RoleAssign()
     {
@@ -33,6 +50,8 @@ public class IcognitoRoleMechanism : MonoBehaviour
 
             playerData.Add(new IcognitoPlayerData(playerName[i], isIcognito));
         }
+
+        iconIndex = Random.Range(0, icognitoImageData.iconList.Count);
     }
 
     [ContextMenu("Display Roles")]
@@ -40,15 +59,33 @@ public class IcognitoRoleMechanism : MonoBehaviour
     {
         foreach (IcognitoPlayerData character in playerData)
         {
-            //Debug.Log(character.name + " is " + (character.isAltruistic ? "Altrustic" : "Ordinary"));
             if (character.isIcognito)
             {
                 Debug.Log(character.name + " is " + " Icognito");
             }
             else
             {
-                Debug.Log(character.name + " is " + " Ordinary");
+                Debug.Log(character.name + " is " + " not Icognito");
             }
+        }
+    }
+
+    public Sprite IcognitoIcon()
+    {
+        return icognitoImageData.iconList[iconIndex];
+    }
+
+    public bool PlayerCheck()
+    {
+        if (playerName.Count != totalPlayerHolder.GetPlayerCount())
+        {
+            Debug.Log("Player Doesnt Same");
+            return false;
+        }
+        else
+        {
+            Debug.Log("OK!");
+            return true;
         }
     }
 }

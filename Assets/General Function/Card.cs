@@ -41,6 +41,7 @@ public class Card : MonoBehaviour
                 if (i == 90f)
                 {
                     roleDisplayMechanism.GetPlayerRole(roleDisplayMechanism.GetCurrentPlayerIndex());
+                    roleDisplayMechanism.nextButton.interactable = true;
                     //rend.sprite = faceSprite;
                 }
                 yield return new WaitForSeconds(0.01f);

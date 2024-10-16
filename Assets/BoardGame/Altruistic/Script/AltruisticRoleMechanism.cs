@@ -119,6 +119,28 @@ public class AltruisticRoleMechanism : MonoBehaviour
         }
     }
 
+    public void MasterPickUp(int newIndex)
+    {
+        int altruisticIndex = Random.Range(0, playerName.Count);
+
+        do
+        {
+            altruisticIndex = Random.Range(0, playerName.Count);
+        } while (altruisticIndex == newIndex);
+
+        for (int i = 0; i < playerName.Count; i++)
+        {
+            if (i != newIndex)
+            {
+                bool isAltruistic = (i == altruisticIndex);
+                bool isOrdinary = !isAltruistic;
+                characters.Add(new AltruisticPlayerData(playerName[i], false, isAltruistic, isOrdinary, false));
+            }
+        }
+    }
+
+
+
     [ContextMenu("Display Role")]
     private void DisplayRoles()
     {

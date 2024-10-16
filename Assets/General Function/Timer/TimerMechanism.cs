@@ -9,11 +9,24 @@ public class TimerMechanism : MonoBehaviour
     public bool timerIsRunning = false;
     public TextMeshProUGUI timeText;
 
+    private bool gameOver = false;
+
     [ContextMenu("Start Timer")]
     public void StartTimer()
     {
         timeRemaining = duration;
         timerIsRunning = true;
+        gameOver = false;
+    }
+
+    public void ResumeTimer()
+    {
+        timerIsRunning = true;
+    }
+
+    public void PauseTimer()
+    {
+        timerIsRunning = false;
     }
 
     private void Update()
@@ -28,10 +41,16 @@ public class TimerMechanism : MonoBehaviour
             else
             {
                 Debug.Log("Time's up!");
+                gameOver = true;
                 timeRemaining = 0;
                 timerIsRunning = false;
             }
         }
+    }
+
+    public bool GetGameOver()
+    {
+        return gameOver;
     }
 
     void DisplayTime(float timeToDisplay)
