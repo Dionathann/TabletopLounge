@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TotalPlayerHolder : MonoBehaviour
 {
-
     private int maxPlayer = 8;
     private int minPlayer = 0;
 

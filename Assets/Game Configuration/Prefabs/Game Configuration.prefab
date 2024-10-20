@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 6827618204560650902}
   - component: {fileID: 4472470121757375091}
   m_Layer: 5
-  m_Name: Confirm Button Holder
+  m_Name: Play the Game Button Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2170,6 +2170,7 @@ MonoBehaviour:
   inputField: {fileID: 6792047761731477511}
   contentHolder: {fileID: 2086836597124375476}
   nameBox: {fileID: 4745279543179940939, guid: e3e7ca7a9b15374478a4d2057427487f, type: 3}
+  totalPlayerDisplay: {fileID: 0}
 --- !u!1 &4705070755207824334
 GameObject:
   m_ObjectHideFlags: 0
@@ -4135,7 +4136,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2712850606890065489}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.65903187
+  m_Size: 0.6589712
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

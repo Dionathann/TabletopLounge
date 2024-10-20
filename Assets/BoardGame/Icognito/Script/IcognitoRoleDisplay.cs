@@ -118,7 +118,7 @@ public class IcognitoRoleDisplay : MonoBehaviour
 
         if(nameHolder.playerNameList.Count < 3)
         {
-            //warningCheck
+            warningDisplay.SetWarningMessage("Player Must More Than 3");
             return;
         }
 

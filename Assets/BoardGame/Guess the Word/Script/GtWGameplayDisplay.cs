@@ -7,19 +7,30 @@ using UnityEngine;
 public class GtWGameplayDisplay : MonoBehaviour
 {
     [SerializeField] GtWGameplayMechanism gtwMechanism;
-    [SerializeField] TimerMechanism timerMechanism;
-    [SerializeField] GtWWordData wordData;
-
+    [SerializeField] TotalPlayerHolder totalPlayerHolder;
+    [SerializeField] WarningDisplay warningDisplay;
     private int currentPlayerIndex;
 
     [Header("UI Reference")]
     [SerializeField] TextMeshProUGUI thisTurnPlayerName;
-    [SerializeField] GameObject nameDisplayerPanel;
-    [SerializeField] GameObject gameplayScreenPanel;
+    [SerializeField] GameObject gameConfigUI;
+    [SerializeField] GameObject DisplayNameUI;
 
-    [Header("Gameplay Screen")]
-    [SerializeField] TextMeshProUGUI wordText;
-    
+    public void ShowPlayerName()
+    {
+        if(totalPlayerHolder.GetPlayerCount() < 2)
+        {
+            warningDisplay.SetWarningMessage("Player Must More Than 2");
+            return;
+        }
+
+        gameConfigUI.SetActive(false);
+
+        DisplayNameUI.SetActive(true);
+
+        DisplayName();
+
+    }
 
     [ContextMenu("Display Name")]
     public void DisplayName()
@@ -28,31 +39,6 @@ public class GtWGameplayDisplay : MonoBehaviour
 
         currentPlayerIndex = gtwMechanism.GetRandomIndexPlayer();
 
-        Debug.Log(list[currentPlayerIndex]);
-
         thisTurnPlayerName.text = ("Now It's " + list[currentPlayerIndex] + "'s Turn");
-    }
-
-    [ContextMenu("Transition To Gameplay")]
-    public void TransitionToGameplay()
-    {
-        gameplayScreenPanel.SetActive(true);
-
-        nameDisplayerPanel.SetActive(false);
-
-        timerMechanism.StartTimer();
-
-        wordData.TestDefaultWord();
-
-        string currenttext = RandomizeWord();
-
-        wordText.text = currenttext;
-    }
-
-    private string RandomizeWord()
-    {
-        int i = Random.Range(0, wordData.wordList.Count);
-
-        return wordData.wordList[i];
     }
 }
