@@ -51,7 +51,7 @@ public class RoleDisplayMechanism : MonoBehaviour
 
     private bool gameModeCheck;
 
-
+    private List<GameObject> masterOptions = new List<GameObject>();
     public void Inizialize()
     {
         altruisticRoleMechanism.PassListName();
@@ -84,7 +84,8 @@ public class RoleDisplayMechanism : MonoBehaviour
 
         //////////////////////////////////////////////////////////////////////////////
 
-        
+        card.ForceFaceDownCard();
+
         wordMechanism.GetWord();
 
         currentIndexPlayer = 0;
@@ -252,9 +253,25 @@ public class RoleDisplayMechanism : MonoBehaviour
         }
         if (altruisticRoleMechanism.characters[index].isSupport)
         {
+            ShowAltruistic();
             RoleCardImage.sprite = supportCardRole;
         }
     }
+
+    private void ShowAltruistic()
+    {
+        wordBoxPanel.SetActive(true);
+
+        altruisticWordIndo.text = "Altruisticnya adalah";
+        for(int i = 0; i < altruisticRoleMechanism.playerName.Count; i++)
+        {
+            if (altruisticRoleMechanism.characters[i].isAltruistic)
+            {
+                altruisticWordEnglish.text = altruisticRoleMechanism.characters[i].name;
+            }
+        }
+    }
+
 
     private void ShowWordForAltruistic()
     {
@@ -266,23 +283,29 @@ public class RoleDisplayMechanism : MonoBehaviour
         altruisticWordIndo.text = indonesiaWord;
         altruisticWordEnglish.text = englishWord;
 
-        Debug.Log("Show Word For Altruistic");
-
     }
 
     public void MasterChooserPLayerName()
     {
+        foreach (GameObject obj in masterOptions)
+        {
+            Destroy(obj);
+        }
+
+        masterOptions.Clear();
+        
+
         for (int i = 0; i < altruisticRoleMechanism.playerName.Count; i++)
         {
-            
             DisplayName(altruisticRoleMechanism.playerName[i], i);
-            
         }
     }
 
     private void DisplayName(string name, int index)
     {
         var newGameObject = Instantiate(playerNameBox, customMasterNameHolder);
+
+        masterOptions.Add(newGameObject);
 
         TextMeshProUGUI textInside = newGameObject.GetComponentInChildren<TextMeshProUGUI>();
 
@@ -328,33 +351,3 @@ public class RoleDisplayMechanism : MonoBehaviour
         return currentIndexPlayer;
     }
 }
-/*// Trigger flip and reveal role
-    public void FlipCard()
-    {
-        if (!isRevealed)
-        {
-            imageRectTransform.rotation = flippedRotation; // Flip to reveal
-            GetPlayerRole(currentIndexPlayer); // Show the role image
-            isRevealed = true;
-            nextButton.interactable = true; // Enable next button
-        }
-    }
-
-    // Move to the next player
-    public void ShowNextPlayer()
-    {
-        if (currentIndexPlayer < altruisticRoleMechanism.characters.Count - 1)
-        {
-            currentIndexPlayer++;
-            ResetCard(); // Reset card to back
-            isRevealed = false;
-            nextButton.interactable = false; // Disable until next flip
-        }
-    }
-
-    private void ResetCard()
-    {
-        imageRectTransform.rotation = originalRotation;
-        RoleCardImage.sprite = backCard; // Show the back of the card
-        nameText.text = ""; // Hide the name
-    }*/

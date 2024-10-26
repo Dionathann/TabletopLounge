@@ -164,16 +164,19 @@ public class AltruisticRoleMechanism : MonoBehaviour
 
     public bool PlayerCheck()
     {
-        if(playerName.Count != totalPlayerHolder.GetPlayerCount())
+        if(playerName.Count == 0)
         {
-            Debug.Log("Player Doesnt Same");
+            Debug.Log("You Need To Assign Name First");
             return false;
         }
-        else
-        {
-            Debug.Log("OK!");
-            return true;
-        }
+        
+        return true;
+        
+    }
+
+    public TMP_Dropdown GetDropDown()
+    {
+        return gameMode;
     }
 
 }

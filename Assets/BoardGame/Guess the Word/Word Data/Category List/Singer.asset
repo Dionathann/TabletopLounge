@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fde7340aa368fc45b2de0db22fbf494, type: 3}
+  m_Name: Singer
+  m_EditorClassIdentifier: 
+  categoryName: Singer
+  wordList:
+  - The Beatles
+  - Michael Jackson
+  - Elvis Presley
+  - Madonna
+  - MLTR - Michael Learn to Rock
+  - Queen
+  - Led Zeppelin
+  - Whitney Houston
+  - Eminem
+  - Taylor Swift
+  - "Beyonc\xE9"
+  - Neck Deep
+  - Ariana Grande
+  - Rihanna
+  - Drake
+  - The Rolling Stones
+  - Kanye West
+  - Lady Gaga
+  - Adele
+  - U2
+  - Bruce Springsteen
+  - Justin Bieber
+  - The Beach Boys
+  - Maroon 5
+  - The Eagles
+  - Billy Joel
+  - Jay-Z
+  - ABBA
+  - Bruno Mars
+  - Coldplay
+  - Nirvana
+  - Stevie Wonder
+  - Prince
+  - Mariah Carey
+  - The Doors
+  - Pink Floyd
+  - David Bowie
+  - The Who
+  - Linkin Park
+  - Foo Fighters
+  - Green Day
+  - Metallica
+  - Fleetwood Mac
+  - Johnny Cash
+  - Katy Perry
+  - The Weeknd
+  - Post Malone
+  - Shakira
+  - Harry Styles
+  - Sam Smith
+  - Aerosmith
+  - Bon Jovi
+  - Blink-182
+  - R.E.M.
+  - The Police
+  - The Smashing Pumpkins
+  - Creedence Clearwater Revival
+  - Santana
+  - The Clash
+  - Journey
+  - The Cranberries
+  - The Killers
+  - Kings of Leon
+  - The Strokes
+  - Paramore
+  - Alice in Chains
+  - The Velvet Underground
+  - Panic! At The Disco
+  - My Chemical Romance
+  - Simon & Garfunkel
+  - Earth, Wind & Fire
+  - Scorpions
+  - Foreigner
+  - The Kinks
+  - The Cure
+  - The Black Keys
+  - MGMT
+  - No Doubt
+  - The Chainsmokers
+  - Daft Punk
+  - Depeche Mode
+  - Pharrell Williams
+  - The Script
+  - Pentatonix
+  - Toto
+  - Imagine Dragons
+  - The 1975
+  - Foster the People
+  - Hozier
+  - Florence + The Machine
+  - Portugal. The Man
+  - Twenty One Pilots
+  - "M\xF6tley Cr\xFCe"
+  - Def Leppard
+  - The White Stripes
+  - Gorillaz
+  - Arcade Fire
+  - The Lumineers
+  - Radiohead
+  - The Prodigy
+  - The Chainsmokers
+  description: Ini adalah Deskripsi Artist

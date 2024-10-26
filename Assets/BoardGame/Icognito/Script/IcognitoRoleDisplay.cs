@@ -28,15 +28,21 @@ public class IcognitoRoleDisplay : MonoBehaviour
 
     private bool gameModeCheck;
 
+
+
     public void IcognitoInizialize()
     {
+
         icognitoRoleMechanism.PassListName();
 
         bool isPassed = icognitoRoleMechanism.PlayerCheck();
+
+        Debug.Log(isPassed);
+
         if (isPassed == false)
         {
             Debug.Log("Fail Inizialize");
-            warningDisplay.SetWarningMessage("Total Player and Listed Player Doesnt Match!");
+            warningDisplay.SetWarningMessage("You Need To Assign Name First!");
             return;
         }
 
@@ -57,6 +63,10 @@ public class IcognitoRoleDisplay : MonoBehaviour
         icognitoRoleMechanism.PassListName();
 
         icognitoRoleMechanism.RoleAssign();
+
+        roleCardImage.sprite = backCard;
+
+        icognitoRoleCardFlipper.ForceFaceDownCard();
 
         currentIndexPlayer = 0;
 

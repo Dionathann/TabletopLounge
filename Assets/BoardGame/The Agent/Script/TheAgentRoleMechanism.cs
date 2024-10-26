@@ -80,16 +80,14 @@ public class TheAgentRoleMechanism : MonoBehaviour
 
     public bool PlayerCheck()
     {
-        if (playerName.Count != totalPlayerHolder.GetPlayerCount())
+        if (playerName.Count == 0)
         {
-            Debug.Log("Player Doesnt Same");
+            Debug.Log("You Need To Assign Name First!");
             return false;
         }
-        else
-        {
-            Debug.Log("OK!");
-            return true;
-        }
+
+        return true;
+        
     }
 
     public int GetMaxLocation()
@@ -105,5 +103,10 @@ public class TheAgentRoleMechanism : MonoBehaviour
     public List<Sprite> GetShuffledLocation()
     {
         return inizializeLocation.shuffledLocationList;
+    }
+
+    public Sprite GetCurrentLocation()
+    {
+        return inizializeLocation.shuffledLocationList[currentLocationIndex];
     }
 }

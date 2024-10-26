@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VotingSystem : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class VotingSystem : MonoBehaviour
 
     [SerializeField] Transform contentHolder;
     public GameObject resultScreen;
+    public GameObject voteScreen;
 
     [Header("Altrusistic Vote Screen")]
     [SerializeField] GameObject altruisticVotedScreen;
@@ -23,21 +25,41 @@ public class VotingSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI notAltruisticVotedText;
     [SerializeField] Image notAltruisticVotedImage;
 
-    [Header("Asset Image")]
-    public Sprite altruisticCard;
-    public Sprite ordinaryCard;
-    public Sprite supportCard;
+    [Header("Asset Icons")]
+    public Sprite altruisticIcon;
+    public Sprite ordinaryIcon;
+    public Sprite supportIcon;
+
+    private List<GameObject> voteDisplayers = new List<GameObject>();
 
     [ContextMenu("Initial Vote System")]
     public void InitialVoteSystem()
     {
-        for (int i = 0; i < altruisticRoleMechanism.playerName.Count; i++)
+        foreach(GameObject obj in voteDisplayers)
         {
-            if (!altruisticRoleMechanism.characters[i].isMaster)
+            Destroy(obj);
+        }
+
+        voteDisplayers.Clear();
+
+        if(altruisticRoleMechanism.GetDropDown().value == 3)
+        {
+            for (int i = 1; i < altruisticRoleMechanism.playerName.Count; i++)
             {
-                DisplayName(altruisticRoleMechanism.playerName[i], i);
+                DisplayName(altruisticRoleMechanism.characters[i].name, i);
             }
         }
+        else
+        {
+            for (int i = 0; i < altruisticRoleMechanism.playerName.Count; i++)
+            {
+                if (!altruisticRoleMechanism.characters[i].isMaster)
+                {
+                    DisplayName(altruisticRoleMechanism.characters[i].name, i);
+                }
+            }
+        }
+        
     }
 
     private void DisplayName(string name, int index)
@@ -57,11 +79,15 @@ public class VotingSystem : MonoBehaviour
         }
         GameObjectIndex indexComponent = newGameObject.AddComponent<GameObjectIndex>();
         indexComponent.index = index;
+
+        voteDisplayers.Add(newGameObject);
     }
 
     public void OnButtonClick(int index)
     {
         Debug.Log("Player " + index + " clicked");
+
+        voteScreen.SetActive(false);
 
         ShowEverything(index);
 
@@ -95,7 +121,7 @@ public class VotingSystem : MonoBehaviour
 
         altruisticVotedText.text = "Yes, " + altruisticRoleMechanism.characters[i].name + " Is an Altruistic!";
 
-        altruisticVotedImage.sprite = altruisticCard;
+        altruisticVotedImage.sprite = altruisticIcon;
     }
 
     private void AltruisticNotVoted(int i)
@@ -106,7 +132,7 @@ public class VotingSystem : MonoBehaviour
 
             notAltruisticVotedText.text = "No, " + altruisticRoleMechanism.characters[i].name + " Is an Ordinary!";
 
-            notAltruisticVotedImage.sprite = ordinaryCard;
+            notAltruisticVotedImage.sprite = ordinaryIcon;
         }
         if (altruisticRoleMechanism.characters[i].isSupport)
         {
@@ -114,7 +140,7 @@ public class VotingSystem : MonoBehaviour
 
             notAltruisticVotedText.text = "No, " + altruisticRoleMechanism.characters[i].name + " Is an Support!";
 
-            notAltruisticVotedImage.sprite = supportCard;
+            notAltruisticVotedImage.sprite = supportIcon;
         }
     }
 
@@ -128,8 +154,16 @@ public class VotingSystem : MonoBehaviour
 
                 altruisticVotedText.text = altruisticRoleMechanism.characters[i].name + " Is an Altruistic!";
 
-                altruisticVotedImage.sprite = altruisticCard;
+                altruisticVotedImage.sprite = altruisticIcon;
             }
+        }
+    }
+
+    public void BacktoMainMenu(string sceneName)
+    {
+        if (sceneName != null)
+        {
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

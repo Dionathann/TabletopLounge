@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameplayMechanism : MonoBehaviour
 {
@@ -29,8 +30,6 @@ public class GameplayMechanism : MonoBehaviour
         gameplayScreen.SetActive(false);
         resultScreen.SetActive(true);
         timesupScreen.SetActive(true);
-
-
     }
 
     private void Update()
@@ -43,11 +42,19 @@ public class GameplayMechanism : MonoBehaviour
 
     public void PauseGame()
     {
-
+        timerMechanism.PauseTimer();
     }
 
     public void ResumeGame()
     {
+        timerMechanism.ResumeTimer();
+    }
 
+    public void BacktoMainMenu(string sceneName)
+    {
+        if(sceneName != null)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 }

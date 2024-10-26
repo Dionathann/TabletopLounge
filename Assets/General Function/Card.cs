@@ -35,14 +35,13 @@ public class Card : MonoBehaviour
 
         if (!facedUp)
         {
-            for (float i = 0f; i <= 180f; i += 10f)
+            for (float i = 180f; i >= 0f; i -= 10f)
             {
                 transform.rotation = Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
                 {
                     roleDisplayMechanism.GetPlayerRole(roleDisplayMechanism.GetCurrentPlayerIndex());
                     roleDisplayMechanism.nextButton.interactable = true;
-                    //rend.sprite = faceSprite;
                 }
                 yield return new WaitForSeconds(0.01f);
             }
@@ -50,7 +49,8 @@ public class Card : MonoBehaviour
 
         else if (facedUp)
         {
-            for (float i = 180f; i >= 0f; i -= 10f)
+            
+            for (float i = 0f; i <= 180f; i += 10f)
             {
                 transform.rotation = Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
@@ -68,6 +68,7 @@ public class Card : MonoBehaviour
 
     public void ForceFaceDownCard()
     {
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         facedUp = false;
     }
 }

@@ -5,17 +5,8 @@ using UnityEngine;
 
 public class ScreenOrientation : MonoBehaviour
 {
-    private bool isPortrait = true; // Start in portrait mode
-    /*private static UnityEngine.ScreenOrientation Portrait;
-    private static UnityEngine.ScreenOrientation LandscapeRight;*/
+    private bool isPortrait = true;
 
-    void Start()
-    {
-        // Set initial orientation to portrait
-        //SetPortraitOrientation();
-    }
-
-    // This method will be called when the button is pressed
     [ContextMenu("Orientation Toggle")]
     public void ToggleOrientation()
     {

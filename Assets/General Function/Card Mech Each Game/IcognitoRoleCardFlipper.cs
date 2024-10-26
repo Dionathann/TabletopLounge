@@ -33,7 +33,8 @@ public class IcognitoRoleCardFlipper : MonoBehaviour
 
         if (!facedUp)
         {
-            for (float i = 0f; i <= 180f; i += 10f)
+            
+            for (float i = 180f; i >= 0f; i -= 10f)
             {
                 transform.rotation = Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
@@ -48,7 +49,7 @@ public class IcognitoRoleCardFlipper : MonoBehaviour
 
         else if (facedUp)
         {
-            for (float i = 180f; i >= 0f; i -= 10f)
+            for (float i = 0f; i <= 180f; i += 10f)
             {
                 transform.rotation = Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
@@ -66,6 +67,7 @@ public class IcognitoRoleCardFlipper : MonoBehaviour
 
     public void ForceFaceDownCard()
     {
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         facedUp = false;
     }
 }

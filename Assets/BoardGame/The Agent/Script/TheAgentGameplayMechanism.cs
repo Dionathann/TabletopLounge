@@ -14,8 +14,15 @@ public class TheAgentGameplayMechanism : MonoBehaviour
 
     [SerializeField] Transform gridTransform;
 
+    private List<GameObject> locationDisplayerList = new List<GameObject>();
     public void DisplayLocation()
     {
+        foreach (GameObject obj in locationDisplayerList)
+        {
+            Destroy(obj);
+        }
+
+        locationDisplayerList.Clear();
 
         agentRoleMechanism.GetShuffledLocation();
 
@@ -24,6 +31,8 @@ public class TheAgentGameplayMechanism : MonoBehaviour
             GameObject newImage = Instantiate(imagePrefab, gridTransform);
 
             newImage.GetComponent<Image>().sprite = agentRoleMechanism.GetShuffledLocation()[i];
+
+            locationDisplayerList.Add(newImage);
         }
     }
 }

@@ -7,83 +7,124 @@ public class GtWGameplayMechanism : MonoBehaviour
     [SerializeField] NameHolder nameHolder;
     [SerializeField] TimerMechanism timerMechanism;
     [SerializeField] GtWWordData wordData;
-
-    private int currentIndexPlayer;
-
-    private int correctCounter;
-    private int skipCounter;
+    [SerializeField] CategoryDisplayer categoryDisplayer;
+    
 
     [Header("UI Reference")]
     [SerializeField] GameObject nameDisplayerPanel;
     [SerializeField] GameObject gameplayScreenPanel;
     [SerializeField] TextMeshProUGUI wordText;
 
-    private List<string> tempList;
+    public List<string> tempShuffledWordList;
+
+    private List<string> currentSessionPlayerList;
+
+    private int currentIndexPlayer;
+
+    private int correctCounter;
+
+    private int skipCounter;
 
     private int currentWordIndex;
+
+    public void Inizialize()
+    {
+        RandomPlayerSession();
+
+        //RandomizeTempWordList();
+
+        currentWordIndex = 0;
+    }
+
+    [ContextMenu("Start Game")]
     public void GameStart()
     {
-        wordData.TestDefaultWord();
-
-        RandomizeTempList();
+        GtWResultDisplay.gameOverFlag = false;
 
         correctCounter = 0;
 
         skipCounter = 0;
 
         gameplayScreenPanel.SetActive(true);
-
-        nameDisplayerPanel.SetActive(false); 
         
         timerMechanism.StartTimer();
 
-        GetNextWord(currentWordIndex);
+        RandomizeTempWordList();
 
         DisplayNextWord();
     }
 
     public List<string> GetPlayerNameList()
     {
-        return nameHolder.playerNameList;
+        return currentSessionPlayerList;
     }
 
     [ContextMenu("Test random")]
-    public int GetRandomIndexPlayer()
+    public int GetIndexPlayer()
     {
-        currentIndexPlayer = Random.Range(0, nameHolder.playerNameList.Count);
-
-        Debug.Log(currentIndexPlayer);
-
         return currentIndexPlayer;
     }
 
 
-    public void RandomizeTempList()
+    public void RandomPlayerSession()
     {
-        tempList?.Clear();
+        currentSessionPlayerList?.Clear();
 
-        tempList = new List<string>(wordData.wordList);
+        currentSessionPlayerList = new List<string>(nameHolder.playerNameList);
 
-        for(int i = 0; i < tempList.Count; i++)
+        for (int i = 0; i < currentSessionPlayerList.Count; i++)
         {
-            string temp = tempList[i];
+            string temp = currentSessionPlayerList[i];
 
-            int index = Random.Range(0, tempList.Count);
+            int index = Random.Range(0, currentSessionPlayerList.Count);
 
-            tempList[i] = tempList[index];
+            currentSessionPlayerList[i] = currentSessionPlayerList[index];
 
-            tempList[index] = temp;
+            currentSessionPlayerList[index] = temp;
+        }
+        currentIndexPlayer = 0;
+    }
+
+    [ContextMenu("Test Randomize Temp List")]
+    public void RandomizeTempWordList()
+    {
+        tempShuffledWordList?.Clear();
+
+        var playableCategory = categoryDisplayer.GetPlayableCategoryList();
+
+        Debug.Log(playableCategory.wordList.Count);
+
+        tempShuffledWordList = new List<string>(playableCategory.wordList);
+
+        for (int i = 0; i < tempShuffledWordList.Count; i++)
+        {
+            string temp = tempShuffledWordList[i];
+
+            int index = Random.Range(0, tempShuffledWordList.Count);
+
+            tempShuffledWordList[i] = tempShuffledWordList[index];
+
+            tempShuffledWordList[index] = temp;
         }
     }
 
-    public string GetNextWord(int index)
+    /*public string GetNextWord(int index)
     {
-        return tempList[index];
-    }
+        if(index >= tempShuffledWordList.Count)
+        {
+            return tempShuffledWordList[0];
+        }
+
+        return tempShuffledWordList[index];
+    }*/
 
     public void DisplayNextWord()
     {
-        wordText.text = tempList[currentWordIndex];
+        if (currentWordIndex >= tempShuffledWordList.Count)
+        {
+            currentWordIndex = 0; 
+        }
+        wordText.text = tempShuffledWordList[currentWordIndex];
     }
 
     public void CorrectButton()
@@ -99,9 +140,9 @@ public class GtWGameplayMechanism : MonoBehaviour
     {
         skipCounter++;
 
-        DisplayNextWord();
-
         currentWordIndex++;
+
+        DisplayNextWord();
     }
 
     public int GetCorrectWordCounter()
@@ -116,7 +157,12 @@ public class GtWGameplayMechanism : MonoBehaviour
 
     public string GetCurrentPlayerName()
     {
-        return nameHolder.playerNameList[currentIndexPlayer];
+        if (currentIndexPlayer < 0 || currentIndexPlayer >= currentSessionPlayerList.Count)
+        {
+            currentIndexPlayer = 0;
+        }
+
+        return currentSessionPlayerList[currentIndexPlayer];
     }
 
     public bool IsGameOver()

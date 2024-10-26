@@ -67,6 +67,7 @@ public class TheAgentRoleCardFlipper : MonoBehaviour
 
     public void ForceFaceDownCard()
     {
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         facedUp = false;
     }
 }

@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cce82db52ea944e9623b5763f662fa, type: 3}
   m_Name: Guess the Word Data
   m_EditorClassIdentifier: 
-  wordList: []
+  wordList:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4

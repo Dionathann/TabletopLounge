@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class NameHolder : MonoBehaviour
 {
     [SerializeField] TotalPlayerHolder totalPlayerHolder;
-
+    [SerializeField] WarningDisplay warningDisplay;
     public List<string> playerNameList = new List<string>();
 
     [SerializeField] TextMeshProUGUI displayName;
@@ -22,6 +22,12 @@ public class NameHolder : MonoBehaviour
     {
         //int playernow = totalPlayerHolder.GetPlayerCount();
 
+        if(string.IsNullOrEmpty(inputField.text))
+        {
+            warningDisplay.SetWarningMessage("Input Can't be Empty");
+            return;
+        }
+
         string inputFieldText = inputField.text;
 
         if(playerNameList.Count < totalPlayerHolder.GetMaxPlayer())
@@ -30,6 +36,7 @@ public class NameHolder : MonoBehaviour
             {
                 if (playerNameList.Contains(inputFieldText))
                 {
+                    warningDisplay.SetWarningMessage("Name Already Exist");
                     Debug.Log("Name Already Exist");
                     return;
                 }
@@ -38,9 +45,6 @@ public class NameHolder : MonoBehaviour
                     InstantiateNameInput(inputFieldText);
 
                     totalPlayerHolder.PlayerIncrement();
-
-                    Debug.Log("Name Added : " + inputFieldText);
-
                 }
             }
         }

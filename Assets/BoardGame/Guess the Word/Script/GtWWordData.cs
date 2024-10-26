@@ -10,7 +10,7 @@ public class GtWWordData : ScriptableObject
 
     public void TestDefaultWord()
     {
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 5; i++)
         {
             wordList.Add(i.ToString());
         }    

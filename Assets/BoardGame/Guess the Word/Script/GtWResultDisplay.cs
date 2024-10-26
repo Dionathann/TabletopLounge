@@ -14,9 +14,12 @@ public class GtWResultDisplay : MonoBehaviour
     [Header("UI Reference")]
     [SerializeField] GameObject gameplayScreen;
     [SerializeField] GameObject resultScreen;
+
+    public static bool gameOverFlag;
+
     private void Update()
     {
-        if (gameplayMechanism.IsGameOver())
+        if (gameplayMechanism.IsGameOver() && !gameOverFlag)
         {
             DisplayResult();
         }
@@ -25,6 +28,8 @@ public class GtWResultDisplay : MonoBehaviour
     [ContextMenu("Display Result")]
     public void DisplayResult()
     {
+        gameOverFlag = true;
+        
         gameplayScreen.SetActive(false);
         
         resultScreen.SetActive(true);
@@ -33,11 +38,12 @@ public class GtWResultDisplay : MonoBehaviour
 
         int skipCounter = gameplayMechanism.GetSkipWordCounter();
 
+        currentPlayer.text = gameplayMechanism.GetCurrentPlayerName() + " , Your Result is";
+
         correctCounterText.text = "Correct Word : " +wordCounter.ToString();
 
         skipCounterText.text = "Skip Word : " + skipCounter.ToString();
 
-        currentPlayer.text = gameplayMechanism.GetCurrentPlayerName() + " , Your Result is";
     }
 
 }

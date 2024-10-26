@@ -37,7 +37,7 @@ public class GtWGameplayDisplay : MonoBehaviour
     {
         var list = gtwMechanism.GetPlayerNameList();
 
-        currentPlayerIndex = gtwMechanism.GetRandomIndexPlayer();
+        currentPlayerIndex = gtwMechanism.GetIndexPlayer();
 
         thisTurnPlayerName.text = ("Now It's " + list[currentPlayerIndex] + "'s Turn");
     }

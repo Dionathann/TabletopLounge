@@ -13,6 +13,8 @@ public class InizializeLocation : MonoBehaviour
     [ContextMenu("Starting")]
     public void Start()
     {
+
+
         locationList = new List<Sprite>(agentImageData.imageLocation);
     }
 

@@ -35,9 +35,9 @@ public class TheAgentRoleDisplay : MonoBehaviour
 
         bool isPassed = agentRoleMechanism.PlayerCheck();
 
-        if (!isPassed)
+        if (isPassed == false)
         {
-            warningDisplay.SetWarningMessage("Total Player and Listed Player Doesnt Match!");
+            warningDisplay.SetWarningMessage("You Need To Assign Name First!");
             return;
         }
 
@@ -57,6 +57,8 @@ public class TheAgentRoleDisplay : MonoBehaviour
         agentRoleMechanism.RoleAssign();
 
         currentIndexPlayer = 0;
+
+        agentRoleCardFlipper.ForceFaceDownCard();
 
         roleCardImage.sprite = backCard;
 

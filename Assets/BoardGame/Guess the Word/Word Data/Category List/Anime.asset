@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fde7340aa368fc45b2de0db22fbf494, type: 3}
+  m_Name: Anime
+  m_EditorClassIdentifier: 
+  categoryName: Anime
+  wordList:
+  - 'Fullmetal Alchemist: Brotherhood'
+  - Attack on Titan
+  - Death Note
+  - Steins;Gate
+  - Your Name
+  - My Hero Academia
+  - One Piece
+  - Naruto
+  - Hunter x Hunter
+  - 'Demon Slayer: Kimetsu no Yaiba'
+  - 'Code Geass: Lelouch of the Rebellion'
+  - Sword Art Online
+  - Neon Genesis Evangelion
+  - Spirited Away
+  - The Disappearance of Haruhi Suzumiya
+  - 'Clannad: After Story'
+  - Dragon Ball Z
+  - Mob Psycho 100
+  - Vinland Saga
+  - Tokyo Ghoul
+  - One Punch Man
+  - Bleach
+  - Re:Zero - Starting Life in Another World
+  - Your Lie in April
+  - Fate/Zero
+  - Kimi no Na wa (Your Name)
+  - Fairy Tail
+  - Monster
+  - Hajime no Ippo
+  - Made in Abyss
+  - No Game No Life
+  - Baccano!
+  - 'Sword Art Online: Alicization'
+  - The Promised Neverland
+  - Hyouka
+  - 'KonoSuba: God''s Blessing on This Wonderful World!'
+  - Death Parade
+  - 'Fate/Stay Night: Unlimited Blade Works'
+  - Paranoia Agent
+  - Gintama
+  - Mob Psycho 100 II
+  - That Time I Got Reincarnated as a Slime
+  - Fruits Basket
+  - Akame ga Kill!
+  - The Seven Deadly Sins
+  - Noragami
+  - Soul Eater
+  - Black Clover
+  - Zankyou no Terror
+  - Kabaneri of the Iron Fortress
+  - Elfen Lied
+  - 'Anohana: The Flower We Saw That Day'
+  - Shingeki no Kyojin (Attack on Titan)
+  - Durarara!!
+  - Yuri on Ice
+  - The Ancient Magus' Bride
+  - Toradora!
+  - Tokyo Revengers
+  - 'Kaguya-sama: Love Is War'
+  - Golden Kamuy
+  - The Rising of the Shield Hero
+  - A Silent Voice
+  - 'Fairy Tail: Final Series'
+  - To Your Eternity
+  - Kono Oto Tomare! Sounds of Life
+  - Bakemonogatari
+  - Dorohedoro
+  - Little Witch Academia
+  - 'Kiseijuu: Sei no Kakuritsu'
+  - The Devil is a Part-Timer!
+  - Inuyasha
+  - Bakemonogatari
+  - Nagi no Asukara
+  - Re:Creators
+  - Kino's Journey
+  - Violet Evergarden
+  - The Saga of Tanya the Evil
+  - Guilty Crown
+  - Plastic Memories
+  - Angel Beats!
+  - Rascal Does Not Dream of Bunny Girl Senpai
+  - 'Wotakoi: Love is Hard for Otaku'
+  - 'Danganronpa: The Animation'
+  - Black Bullet
+  - Kyoukai no Kanata
+  - Bunny Girl Senpai
+  - Shouwa Genroku Rakugo Shinjuu
+  - Kyoukai no Rinne
+  - 'KonoSuba: God''s Blessing on This Wonderful World! Legend of Crimson'
+  - The Asterisk War
+  - Chihayafuru
+  - Sekirei
+  - "Fate/kaleid liner Prisma\u2606Illya"
+  - Kono Oto Tomare! Sounds of Life
+  - 'Tsubasa: Reservoir Chronicle'
+  - Hellsing Ultimate
+  - Shiki
+  - Berserk
+  - The Tatami Galaxy
+  - Steins;Gate 0
+  - Toradora!
+  - Zetsuen no Tempest
+  - Bungou Stray Dogs
+  - 'Kaguya-sama: Love Is War - Ultra Romantic'
+  - 'Sword Art Online: Gun Gale Online'
+  - Gundam Wing
+  - Guilty Crown
+  - 'Grimgar: Ashes and Illusions'
+  - K Project
+  - 'Monster Musume: Everyday Life with Monster Girls'
+  - My Dress-Up Darling
+  - Shoujo Shuumatsu Ryokou
+  - Jujutsu Kaisen
+  - 'Parasyte: The Maxim'
+  - Kimi to Boku
+  - Kimi no Na wa (Your Name)
+  - The World God Only Knows
+  - Ouran High School Host Club
+  - 'Mushoku Tensei: Jobless Reincarnation'
+  - Takt Op. Destiny
+  - Zetsuen no Tempest
+  - Toradora!
+  - 'Chouyuu Sekai: Being a Hero is Too Hard'
+  - 'Kaguya-sama: Love is War'
+  - 'Sword Art Online: Progressive'
+  - High School DxD
+  - Hellsing
+  - Alderamin on the Sky
+  - 'Nisekoi: False Love'
+  - 'Sankarea: Undying Love'
+  - The Case Study of Vanitas
+  - Shiki
+  - The World God Only Knows
+  - 'Kaguya-sama: Love Is War'
+  - Zetsuen no Tempest
+  - 'Mushoku Tensei: Jobless Reincarnation'
+  - Alderamin on the Sky
+  - 'Nisekoi: False Love'
+  description: Ini adalah Deskripsi Anime

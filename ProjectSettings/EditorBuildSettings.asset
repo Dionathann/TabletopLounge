@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Menu Scenes/Scenes/Main Menu.unity
+    guid: b80b94e508260334587b9956c28593a1
+  - enabled: 1
+    path: Assets/BoardGame/Altruistic/Scenes/Altruistic Scene.unity
+    guid: a4e92d1d0a523ac4484d1e9527be92a4
+  - enabled: 1
     path: Assets/BoardGame/Decider/Scenes/Decider Scene.unity
     guid: e6be16da0d9c7394388a0b50ad195c62
+  - enabled: 1
+    path: Assets/BoardGame/Guess the Word/Scenes/Guess the Word Scene.unity
+    guid: 8d9d4673b9b1f2144af3e4c90c3c42c3
+  - enabled: 1
+    path: Assets/BoardGame/The Agent/Scenes/The Agent Scene.unity
+    guid: 71fd41f9ba3eb104c92751775556676f
+  - enabled: 1
+    path: Assets/BoardGame/Icognito/Scenes/Icognito Scene.unity
+    guid: bb436021d26bc2f4e80c900a25d75e61
   m_configObjects: {}

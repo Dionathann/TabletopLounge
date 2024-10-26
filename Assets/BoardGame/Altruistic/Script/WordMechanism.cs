@@ -10,6 +10,12 @@ public class WordMechanism : MonoBehaviour
 
     private int currentIndex;
 
+    private void Start()
+    {
+        wordData.ClearWords();
+        wordData.AddWordsManually();
+    }
+
     [ContextMenu("Show the Word")]
     public void GetWord()
     {
@@ -33,12 +39,6 @@ public class WordMechanism : MonoBehaviour
     {
         return wordData.wordsListIndonesia[currentIndex];
     }
-
-    /*private void DisplayWord()
-    {
-        wordTextEnglish.text = GetWordEnglish();
-        wordTextIndonesia.text = GetWordIndonesia();
-    }*/
 
     public int GetCurrentWordIndex()
     {
