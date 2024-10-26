@@ -15,6 +15,7 @@ public class IcognitoRoleDisplay : MonoBehaviour
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] Image roleCardImage;
+    [SerializeField] Image middleIcon;
     [SerializeField] GameObject gameConfigurationCanvasPrefab;
     [SerializeField] GameObject roleDisplayIcognitoPrefab;
     public Button nextButton;
@@ -114,12 +115,14 @@ public class IcognitoRoleDisplay : MonoBehaviour
     {
         if (icognitoRoleMechanism.playerData[index].isIcognito)
         {
+            DisableMiddleIcon();
             roleCardImage.sprite = icognitoCardRole;
-            Debug.Log(icognitoRoleMechanism.playerData[index].name);
         }
         else
         {
-            roleCardImage.sprite = icognitoRoleMechanism.IcognitoIcon();
+            EnableMiddleIcon();
+            roleCardImage.sprite = null;
+            middleIcon.sprite = icognitoRoleMechanism.IcognitoIcon();
         }
     }
     private void PlayerAmountCheck()
@@ -139,4 +142,14 @@ public class IcognitoRoleDisplay : MonoBehaviour
     {
         return currentIndexPlayer;
     }
+
+    public void DisableMiddleIcon()
+    {
+        middleIcon.gameObject.SetActive(false);
+    }
+
+    public void EnableMiddleIcon()
+    {
+        middleIcon.gameObject.SetActive(true);
+    }   
 }

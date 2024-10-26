@@ -54,6 +54,7 @@ public class IcognitoRoleCardFlipper : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
                 {
+                    icognitoRoleDisplay.DisableMiddleIcon();
                     Card.sprite = icognitoRoleDisplay.backCard;
                 }
                 yield return new WaitForSeconds(0.01f);
@@ -67,6 +68,7 @@ public class IcognitoRoleCardFlipper : MonoBehaviour
 
     public void ForceFaceDownCard()
     {
+        icognitoRoleDisplay.DisableMiddleIcon();
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         facedUp = false;
     }

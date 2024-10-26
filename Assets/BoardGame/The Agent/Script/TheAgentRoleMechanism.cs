@@ -109,4 +109,14 @@ public class TheAgentRoleMechanism : MonoBehaviour
     {
         return inizializeLocation.shuffledLocationList[currentLocationIndex];
     }
+
+    public bool GetCurrentLocationIndex(int i)
+    {
+        if(currentLocationIndex == i)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

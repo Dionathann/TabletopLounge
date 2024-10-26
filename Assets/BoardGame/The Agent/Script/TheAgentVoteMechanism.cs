@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class TheAgentVoteMechanism : MonoBehaviour
 {
     [SerializeField] TheAgentRoleMechanism agentRoleMechanism;
+    [SerializeField] TheAgentGameplayMechanism gameplayMechanism;
     [SerializeField] GameObject nameDisplayer;
-
     [SerializeField] Transform contentHolder;
     public GameObject resultScreen;
     public GameObject voteScreen;
+    [SerializeField] GameObject gameplayScreen;
 
     [Header("The Agent Vote Screen")]
     [SerializeField] GameObject agentVotedScreen;
@@ -22,10 +23,28 @@ public class TheAgentVoteMechanism : MonoBehaviour
     [SerializeField] TextMeshProUGUI notagentVotedText;
     [SerializeField] Image notagentVotedImage;
 
+
+    [Header("Agent Choose Location UI Reference")]
+    [SerializeField] GameObject agentChooseLocationScreen;
+    [SerializeField] TextMeshProUGUI agentChooseLocationText;
+    [SerializeField] Image agentChooseLocationImage;
+
+
     [Header("Asset Icons")]
     public Sprite theAgentIcon;
 
     private List<GameObject> voteDisplayers = new List<GameObject>();
+    public static bool isGameOver;
+    private void Update()
+    {
+        if (gameplayMechanism.IsGameOver() && !isGameOver)
+        {
+            gameplayScreen.SetActive(false);
+            voteScreen.SetActive(true);
+            isGameOver = true;
+            InitialVoteSystem();
+        }
+    }
 
     [ContextMenu("Initial Vote System")]
     public void InitialVoteSystem()
@@ -113,6 +132,28 @@ public class TheAgentVoteMechanism : MonoBehaviour
 
                 agentVotedImage.sprite = theAgentIcon;
             }
+        }
+    }
+
+    public void AgentChooseLocation(bool isCorrect)
+    {
+        resultScreen.SetActive(true);
+
+        if (isCorrect)
+        {
+            agentVotedScreen.SetActive(true);
+
+            agentVotedText.text = "The Agent is Correct!";
+
+            agentVotedImage.sprite = agentRoleMechanism.GetCurrentLocation();
+        }
+        else 
+        {
+            agentVotedScreen.SetActive(true);
+
+            agentVotedText.text = "The Agent is Wrong!";
+
+            agentVotedImage.sprite = agentRoleMechanism.GetCurrentLocation();
         }
     }
 }

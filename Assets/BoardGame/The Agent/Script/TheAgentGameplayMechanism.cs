@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,7 +15,18 @@ public class TheAgentGameplayMechanism : MonoBehaviour
 
     [SerializeField] Transform gridTransform;
 
+    [SerializeField] TheAgentVoteMechanism theAgentVoteMechanism;
+
+    [SerializeField] TimerMechanism timerMechanism;
+
     private List<GameObject> locationDisplayerList = new List<GameObject>();
+
+    public void Inizialize()
+    {
+        timerMechanism.StartTimer();
+        TheAgentVoteMechanism.isGameOver = false;
+    }
+
     public void DisplayLocation()
     {
         foreach (GameObject obj in locationDisplayerList)
@@ -32,7 +44,48 @@ public class TheAgentGameplayMechanism : MonoBehaviour
 
             newImage.GetComponent<Image>().sprite = agentRoleMechanism.GetShuffledLocation()[i];
 
+            GridIndex imageIndex = newImage.AddComponent<GridIndex>();
+
+            imageIndex.index = i;
+
+            Button button = newImage.GetComponent<Button>();
+
+            if (button != null)
+            {
+                button.onClick.AddListener(() => OnButtonClick(imageIndex.index));
+            }
+
             locationDisplayerList.Add(newImage);
         }
     }
+
+    private void OnButtonClick(int i)
+    {
+        bool isCorrectLocation = agentRoleMechanism.GetCurrentLocationIndex(i);
+
+
+        Debug.Log(isCorrectLocation);
+
+        if (isCorrectLocation)
+        {
+            theAgentVoteMechanism.AgentChooseLocation(isCorrectLocation);
+
+
+        }
+        else
+        {
+            theAgentVoteMechanism.AgentChooseLocation(isCorrectLocation);
+        }
+    }
+    
+    public bool IsGameOver()
+    {
+        return timerMechanism.GetGameOver();
+    }
+}
+
+[System.Serializable]
+public class GridIndex : MonoBehaviour
+{
+    public int index;
 }

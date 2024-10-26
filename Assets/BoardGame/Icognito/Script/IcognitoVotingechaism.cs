@@ -11,17 +11,22 @@ public class IcognitoVotingechaism : MonoBehaviour
     [SerializeField] GameObject nameDisplayer;
     [SerializeField] Transform contentHolder;
 
+    [SerializeField] GameObject restartButtonPanel;
+
     [Header("UI References")]
     [SerializeField] GameObject voteScreen;
     [SerializeField] GameObject resultScreen;
 
     [Header("Icognito Voted Screen")]
     [SerializeField] GameObject icognitoVotedScreen;
+
+    [Header("Icognito Win/Lose Announcement")]
+    [SerializeField] GameObject icognitoAnnouncement;
     [SerializeField] TextMeshProUGUI icognitoVotedText;
     [SerializeField] Image icognitoVotedImage;
     [SerializeField] Sprite icognitoIcon;
 
-    [Header("Icognito Voted Screen")]
+    [Header("Icognito Not Voted Screen")]
     [SerializeField] GameObject icognitoNotVotedScreen;
     [SerializeField] TextMeshProUGUI icognitoNotVotedText;
     [SerializeField] Image icognitoNotVotedImage;
@@ -60,6 +65,7 @@ public class IcognitoVotingechaism : MonoBehaviour
             button.onClick.AddListener(() => OnButtonClick(index));
         }
         GameObjectIndex indexComponent = newGameObject.AddComponent<GameObjectIndex>();
+
         indexComponent.index = index;
 
         voteDisplayers.Add(newGameObject);
@@ -79,6 +85,7 @@ public class IcognitoVotingechaism : MonoBehaviour
         }
         else
         {
+            restartButtonPanel.SetActive(true);
             IcognitoNotVoted(index);
         }
     }
@@ -86,10 +93,25 @@ public class IcognitoVotingechaism : MonoBehaviour
     private void IcognitoVoted(int i)
     {
         icognitoVotedScreen.SetActive(true);
+    }
 
-        icognitoVotedText.text = "Yes, " + icognitoRoleMechanism.playerData[i].name + " is an Icognito!";
+    public void IcognitoCorrectGuessed()
+    {
+        restartButtonPanel.SetActive(true);
+        icognitoVotedScreen.SetActive(false);
+        icognitoAnnouncement.SetActive(true);
 
-        icognitoVotedImage.sprite = icognitoIcon;
+        icognitoVotedText.text = "The Guess is Correct! Icognito Win the Game!";
+
+    }
+
+    public void IcognitoWrongGuessed()
+    {
+        restartButtonPanel.SetActive(true);
+        icognitoVotedScreen.SetActive(false);
+        icognitoAnnouncement.SetActive(true);
+
+        icognitoVotedText.text = "The Guess is Incorrect! Icognito Lose the Game!";
     }
 
     private void IcognitoNotVoted(int i)
@@ -107,11 +129,11 @@ public class IcognitoVotingechaism : MonoBehaviour
         {
             if (icognitoRoleMechanism.playerData[i].isIcognito)
             {
-                icognitoVotedScreen.SetActive(true);
+                icognitoNotVotedScreen.SetActive(true);
 
-                icognitoVotedText.text = icognitoRoleMechanism.playerData[i].name + " is an Icognito!";
+                icognitoNotVotedText.text = icognitoRoleMechanism.playerData[i].name + " is an Icognito!";
 
-                icognitoVotedImage.sprite = icognitoIcon;
+                icognitoNotVotedImage.sprite = icognitoIcon;
             }
         }
 
