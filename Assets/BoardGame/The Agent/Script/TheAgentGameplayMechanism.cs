@@ -53,6 +53,8 @@ public class TheAgentGameplayMechanism : MonoBehaviour
             if (button != null)
             {
                 button.onClick.AddListener(() => OnButtonClick(imageIndex.index));
+
+                button.interactable = false;
             }
 
             locationDisplayerList.Add(newImage);
@@ -63,14 +65,11 @@ public class TheAgentGameplayMechanism : MonoBehaviour
     {
         bool isCorrectLocation = agentRoleMechanism.GetCurrentLocationIndex(i);
 
-
         Debug.Log(isCorrectLocation);
 
         if (isCorrectLocation)
         {
             theAgentVoteMechanism.AgentChooseLocation(isCorrectLocation);
-
-
         }
         else
         {
@@ -78,6 +77,16 @@ public class TheAgentGameplayMechanism : MonoBehaviour
         }
     }
     
+    public void AgentReveal()
+    {
+        timerMechanism.PauseTimer();
+
+        foreach (GameObject obj in locationDisplayerList)
+        {
+            obj.GetComponent<Button>().interactable = true;
+        }
+    }
+
     public bool IsGameOver()
     {
         return timerMechanism.GetGameOver();

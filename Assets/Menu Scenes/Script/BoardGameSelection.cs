@@ -42,8 +42,6 @@ public class BoardGameSelection : MonoBehaviour
 
     public void LoadScene(string namescene)
     {
-        Debug.Log("Load " + namescene);
-
         SceneManager.LoadScene(namescene);
     }
 

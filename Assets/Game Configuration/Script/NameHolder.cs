@@ -9,7 +9,6 @@ public class NameHolder : MonoBehaviour
     [SerializeField] WarningDisplay warningDisplay;
     public List<string> playerNameList = new List<string>();
 
-    [SerializeField] TextMeshProUGUI displayName;
 
     [SerializeField] TMP_InputField inputField;
 
@@ -18,6 +17,36 @@ public class NameHolder : MonoBehaviour
     private List<GameObject> instantiatedNameObjects = new List<GameObject>();
 
     [SerializeField] TextMeshProUGUI totalPlayerDisplay;
+
+    [ContextMenu("Use Previous Name")]
+    public void UsePreviousName()
+    {
+        //playerNameList = new List<string>(PlayerNameData.playerNameList);
+
+        List<string> namesToAdd = new List<string>(PlayerNameData.playerNameList);
+
+        PlayerNameData.playerNameList.Clear();
+
+        foreach (string name in namesToAdd)
+        {
+            Debug.Log(namesToAdd.Count);
+            if (!playerNameList.Contains(name))
+            {
+                InstantiateNameInput(name);
+
+                totalPlayerHolder.PlayerIncrement();
+
+                DisplayPlayerCounter();
+            }
+        }
+
+    }
+
+    public void DontUsePreviousName()
+    {
+        PlayerNameData.playerNameList.Clear();
+    }
+
     public void ConfirmAddName()
     {
         //int playernow = totalPlayerHolder.GetPlayerCount();
@@ -42,6 +71,8 @@ public class NameHolder : MonoBehaviour
                 }
                 else
                 {
+                    PlayerNameData.playerNameList.Add(inputFieldText);
+
                     InstantiateNameInput(inputFieldText);
 
                     totalPlayerHolder.PlayerIncrement();
@@ -85,6 +116,8 @@ public class NameHolder : MonoBehaviour
         }
     }
 
+
+
     public void DisplayPlayerCounter()
     {
         totalPlayerDisplay.text = totalPlayerHolder.GetPlayerCount().ToString();
@@ -93,6 +126,7 @@ public class NameHolder : MonoBehaviour
     private void RemoveNameFromList(string name)
     {
         playerNameList.Remove(name);
+        PlayerNameData.playerNameList.Remove(name);
     }
 
     private void RemoveName(GameObject objectToDelete)

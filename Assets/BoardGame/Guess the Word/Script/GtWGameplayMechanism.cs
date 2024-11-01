@@ -165,6 +165,11 @@ public class GtWGameplayMechanism : MonoBehaviour
         return currentSessionPlayerList[currentIndexPlayer];
     }
 
+    public int currentIndexPlayerIncrement()
+    {
+        return currentIndexPlayer++;
+    }
+
     public bool IsGameOver()
     {
         return timerMechanism.GetGameOver();

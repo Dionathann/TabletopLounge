@@ -71,6 +71,8 @@ public class IcognitoRoleDisplay : MonoBehaviour
 
         currentIndexPlayer = 0;
 
+        nameText.text = icognitoRoleMechanism.playerData[currentIndexPlayer].name;
+
         ShowPlayerConfirmation();
 
     }

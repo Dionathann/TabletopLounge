@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20cbea12db02fb4b874b512e369c015, type: 3}
   m_Name: The Agent
   m_EditorClassIdentifier: 
-  boardgameIcon: {fileID: 0}
+  boardgameIcon: {fileID: 21300000, guid: 390445563ea072146ab447d2c40b9500, type: 3}
   boardgameName: The Agent
-  duration: 35'
+  duration: 6-10'
   playerRequirement: 3-8
   nameScene: The Agent Scene

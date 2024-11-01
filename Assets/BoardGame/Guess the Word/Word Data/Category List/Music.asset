@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   categoryName: Music
   wordList: []
-  description: Ini adalah Deskripsi Music
+  description: Sing or hum the melody but avoid using the song title to singing it
+    out

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20cbea12db02fb4b874b512e369c015, type: 3}
   m_Name: Icognito
   m_EditorClassIdentifier: 
-  boardgameIcon: {fileID: 21300000, guid: ea56b41d3861e3143b252c31915eac14, type: 3}
+  boardgameIcon: {fileID: 21300000, guid: d4a58979e1ce88a4e82fb4acff8ffdc0, type: 3}
   boardgameName: Icognito
-  duration: 30'
+  duration: 15'
   playerRequirement: 3-8
   nameScene: Icognito Scene

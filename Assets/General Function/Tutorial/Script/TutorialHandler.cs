@@ -12,6 +12,11 @@ public class TutorialHandler : MonoBehaviour
     public List<GameObject> tutorialPages = new List<GameObject>();
     private int pageIndex;
 
+    private void OnEnable()
+    {
+        pageIndex = 0;
+    }
+
     public void ShowTutorial()
     {
         pageIndex = 0;

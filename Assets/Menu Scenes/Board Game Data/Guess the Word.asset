@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20cbea12db02fb4b874b512e369c015, type: 3}
   m_Name: Guess the Word
   m_EditorClassIdentifier: 
-  boardgameIcon: {fileID: 21300000, guid: 12518732ec7c1054bb513466c546170c, type: 3}
+  boardgameIcon: {fileID: 21300000, guid: 5496bbf36c420214e8eaeb24e906793e, type: 3}
   boardgameName: Guess the Word
-  duration: 20'
-  playerRequirement: 2-8
+  duration: 2-3'
+  playerRequirement: 3-8
   nameScene: Guess the Word Scene

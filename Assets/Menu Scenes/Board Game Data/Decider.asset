@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20cbea12db02fb4b874b512e369c015, type: 3}
   m_Name: Decider
   m_EditorClassIdentifier: 
-  boardgameIcon: {fileID: 21300000, guid: 022103b763833114fa8a0e685422d021, type: 3}
+  boardgameIcon: {fileID: 21300000, guid: a80576fe44785064ca17d897ced7c374, type: 3}
   boardgameName: Decider
-  duration: 15'
+  duration: 1''
   playerRequirement: 2-8
   nameScene: Decider Scene

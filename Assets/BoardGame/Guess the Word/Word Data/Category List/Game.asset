@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   categoryName: Game
   wordList: []
-  description: Ini adalah Deskripsi Game
+  description: You can tell the publisher, genres, environment, or the most popular
+    thing inside the game
