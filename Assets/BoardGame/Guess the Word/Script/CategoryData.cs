@@ -9,7 +9,7 @@ public class CategoryData : ScriptableObject
     public string categoryName;
     public List<string> wordList = new List<string>();
 
-    [TextArea(2,5)]
+    [TextArea(2, 5)]
     public string description;
 
 
@@ -159,6 +159,32 @@ public class CategoryData : ScriptableObject
     {
         Debug.Log("Add Word Artist");
 
+        wordList.Add("Post Malone");
+        wordList.Add("Marshmello");
+        wordList.Add("Khalid");
+        wordList.Add("Lil Nas X");
+        wordList.Add("Imagine Dragons");
+        wordList.Add("Selena Gomez");
+        wordList.Add("Rex Orange County");
+        wordList.Add("Giveon");
+        wordList.Add("SZA");
+        wordList.Add("Joji");
+        wordList.Add("Rick Astley");
+        wordList.Add("Becky Hill");
+        wordList.Add("Bad Bunny");
+        wordList.Add("Aha");
+        wordList.Add("Red Velvet");
+        wordList.Add("Keane");
+        wordList.Add("Smash Mouth");
+        wordList.Add("The Kid LAROI");
+        wordList.Add("Checmical Romance");
+        wordList.Add("Bazzi");
+        wordList.Add("Brinng Me The Horizon");
+        wordList.Add("Tones and I");
+        wordList.Add("Yoasobi");
+        wordList.Add("Rich Brian");
+        wordList.Add("21 Pilots");
+
         wordList.Add("The Beatles");
         wordList.Add("Michael Jackson");
         wordList.Add("Elvis Presley");
@@ -209,7 +235,6 @@ public class CategoryData : ScriptableObject
         wordList.Add("Shakira");
         wordList.Add("Harry Styles");
         wordList.Add("Sam Smith");
-
         wordList.Add("Aerosmith");
         wordList.Add("Bon Jovi");
         wordList.Add("Blink-182");
@@ -370,7 +395,6 @@ public class CategoryData : ScriptableObject
     private void AddWordAnime()
     {
         Debug.Log("Add Word Film");
-
         wordList.Add("Fullmetal Alchemist: Brotherhood");
         wordList.Add("Attack on Titan");
         wordList.Add("Death Note");
@@ -659,6 +683,33 @@ public class CategoryData : ScriptableObject
     private void AddWordMusic()
     {
         Debug.Log("Add Word Music");
+
+        wordList.Add("Blinding Lights");
+        wordList.Add("Shape of You");
+        wordList.Add("Thinking Out Loud");
+        wordList.Add("Happy");
+        wordList.Add("Old Town Road");
+        wordList.Add("Uptown Funk");
+        wordList.Add("Sunflower");
+        wordList.Add("Rolling in the Deep");
+        wordList.Add("Senorita");
+        wordList.Add("Perfect");
+        wordList.Add("Despacito");
+        wordList.Add("Bad Guy");
+        wordList.Add("God's Plan");
+        wordList.Add("Thank U, Next");
+        wordList.Add("Lucid Dreams");
+        wordList.Add("All of Me");
+        wordList.Add("Closer");
+        wordList.Add("Havana");
+        wordList.Add("Shallow");
+        wordList.Add("Sorry Not Sorry");
+        wordList.Add("Levitating");
+        wordList.Add("Montero (Call Me By Your Name)");
+        wordList.Add("Peaches");
+        wordList.Add("Stay");
+        wordList.Add("Save Your Tears");
+        wordList.Add("good 4 u");
 
         wordList.Add("Bohemian Rhapsody");
         wordList.Add("Billie Jean");

@@ -13,6 +13,10 @@ public class GtWPreparation : MonoBehaviour
 
     public Coroutine countdownCoroutine;
 
+    public AudioSource SFXAudioSource;
+    public AudioClip countDownSound;
+    public AudioClip playSound;
+
     public IEnumerator StartCountdown()
     {
         countdownPanel.SetActive(true);
@@ -27,10 +31,12 @@ public class GtWPreparation : MonoBehaviour
 
         for (int i = 3; i > 0; i--)
         {
+            SFXAudioSource.PlayOneShot(countDownSound);
+
             mainText.text = i.ToString();
 
             mainText.gameObject.SetActive(true);
-            
+
             yield return new WaitForSeconds(1f);
         }
 
@@ -42,6 +48,7 @@ public class GtWPreparation : MonoBehaviour
             countdownCoroutine = null;
         }
 
+        SFXAudioSource.PlayOneShot(playSound);
         gameplayMechanism.GameStart();
     }
 }

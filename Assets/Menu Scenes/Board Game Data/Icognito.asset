@@ -17,3 +17,6 @@ MonoBehaviour:
   duration: 15'
   playerRequirement: 3-8
   nameScene: Icognito Scene
+  description: "Social deduction game where players try to identify the \"Icognito\"
+    the one player who doesn\u2019t know the secret object but must blend in to avoid
+    detection"

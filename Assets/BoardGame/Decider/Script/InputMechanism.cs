@@ -85,9 +85,15 @@ public class InputMechanism : MonoBehaviour
         {
             isPassedInterval = true;
             StartChooseInput();
+            Vibrate();
         }
 
         
+    }
+
+    public void Vibrate()
+    {
+        Handheld.Vibrate();
     }
 
     private void IntervalCounter()

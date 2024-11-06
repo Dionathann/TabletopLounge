@@ -10,22 +10,30 @@ public class IcognitoGameplayMechanism : MonoBehaviour
     [SerializeField] GameObject icognitoGameplayScreen;
     [SerializeField] Image categoryImage;
 
-    private void Update()
-    {
-        
-    }
-
-
+    private List<Sprite> tempCategoryList = new List<Sprite>();
     [ContextMenu("Start Game")]
     public void StartGame()
     {
+        tempCategoryList?.Clear();
+
+        tempCategoryList = new List<Sprite>(icognitoImageData.categoryList);
+
+        for (int i = 0; i < tempCategoryList.Count; i++)
+        {
+            Sprite temp = tempCategoryList[i];
+
+            int index = Random.Range(0, tempCategoryList.Count);
+
+            tempCategoryList[i] = tempCategoryList[index];
+
+            tempCategoryList[index] = temp;
+        }
+
         icognitoGameplayScreen.SetActive(true);
 
-        //timerMechanism.StartTimer();
+        int randomizer = Random.Range(0, tempCategoryList.Count);
 
-        int i = Random.Range(0, icognitoImageData.categoryList.Count);
-
-        categoryImage.sprite = icognitoImageData.categoryList[i];
+        categoryImage.sprite = icognitoImageData.categoryList[randomizer];
     }
 
 

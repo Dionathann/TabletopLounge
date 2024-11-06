@@ -29,16 +29,4 @@ public class MainMenuHandler : MonoBehaviour
         Application.Quit();
     }
 
-    public void tester()
-    {
-        if(PlayerNameData.playerNameList.Count == 0)
-        {
-            Debug.Log("Empty");
-        }
-
-        foreach(string name in PlayerNameData.playerNameList)
-        {
-            Debug.Log(name);
-        }
-    }
 }

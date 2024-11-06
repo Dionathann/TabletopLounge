@@ -34,6 +34,8 @@ public class GtWResultDisplay : MonoBehaviour
         
         resultScreen.SetActive(true);
 
+        gameplayMechanism.SFXSound.PlayOneShot(gameplayMechanism.finishSound);
+
         int wordCounter = gameplayMechanism.GetCorrectWordCounter();
 
         int skipCounter = gameplayMechanism.GetSkipWordCounter();

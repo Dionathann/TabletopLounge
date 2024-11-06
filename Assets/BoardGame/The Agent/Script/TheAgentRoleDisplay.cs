@@ -21,11 +21,13 @@ public class TheAgentRoleDisplay : MonoBehaviour
     [SerializeField] GameObject gameConfigurationCanvasPrefab;
     [SerializeField] GameObject roleDisplayAgentPrefab;
     [SerializeField] Image roleCardImage;
+    [SerializeField] Image middleIcon;
     public Button nextButton;
     [SerializeField] GameObject confirmationScreen;
     [SerializeField] GameObject confirmationPanel;
     [SerializeField] TextMeshProUGUI confirmationPlayerName;
-    
+    [SerializeField] TextMeshProUGUI topTextPlayer;
+
     private bool gameModeCheck;
     private List<Sprite> copySprite = new List<Sprite>();
 
@@ -57,6 +59,8 @@ public class TheAgentRoleDisplay : MonoBehaviour
         agentRoleMechanism.RoleAssign();
 
         currentIndexPlayer = 0;
+
+        topTextPlayer.text = agentRoleMechanism.playerRole[currentIndexPlayer].playerName;
 
         agentRoleCardFlipper.ForceFaceDownCard();
 
@@ -96,6 +100,8 @@ public class TheAgentRoleDisplay : MonoBehaviour
 
         nextButton.interactable = false;
 
+        topTextPlayer.text = agentRoleMechanism.playerRole[currentIndexPlayer].playerName;
+
         roleCardImage.sprite = backCard;
 
         ShowPlayerConfirmation();
@@ -105,11 +111,15 @@ public class TheAgentRoleDisplay : MonoBehaviour
     {
         if (agentRoleMechanism.playerRole[index].isAgent)
         {
+            DisableMiddleIcon();
             roleCardImage.sprite = agentRoleCard;
         }
-        else 
+        else
         {
-            roleCardImage.sprite = agentRoleMechanism.GetShuffledLocation()[agentRoleMechanism.currentLocationIndex];
+            EnableMiddleIcon();
+
+            roleCardImage.sprite = null;
+            middleIcon.sprite = agentRoleMechanism.GetShuffledLocation()[agentRoleMechanism.currentLocationIndex];
         }
 
     }
@@ -130,5 +140,14 @@ public class TheAgentRoleDisplay : MonoBehaviour
     public int GetCurrentIndexPlayer()
     {
         return currentIndexPlayer;
+    }
+    public void DisableMiddleIcon()
+    {
+        middleIcon.gameObject.SetActive(false);
+    }
+
+    public void EnableMiddleIcon()
+    {
+        middleIcon.gameObject.SetActive(true);
     }
 }

@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class BoardGameSelection : MonoBehaviour
 {
@@ -14,8 +15,16 @@ public class BoardGameSelection : MonoBehaviour
 
     private List<GameObject> boardgameDisplayerList = new List<GameObject>();
 
+    public AudioSource sfxSound;
+
+    public AudioClip sfxClip;
     public void DisplayBoardGame()
     {
+        foreach (GameObject obj in boardgameDisplayerList)
+        {
+            Destroy(obj);
+        }
+
         boardgameDisplayerList.Clear();
 
         for (int i = 0; i < boardgameData.Count; i++)
@@ -33,12 +42,17 @@ public class BoardGameSelection : MonoBehaviour
                 string scene = boardgameData[i].nameScene;
 
                 button.onClick.AddListener(() => LoadScene(scene));
+
+                button.onClick.AddListener(() => PlaySound(sfxClip));
             }
             boardgameDisplayerList.Add(newBoardgame);
         }
     }
 
-
+    public void PlaySound(AudioClip sound)
+    {
+        sfxSound.PlayOneShot(sound);
+    }
 
     public void LoadScene(string namescene)
     {

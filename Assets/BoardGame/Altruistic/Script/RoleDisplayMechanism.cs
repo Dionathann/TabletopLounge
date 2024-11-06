@@ -191,7 +191,7 @@ public class RoleDisplayMechanism : MonoBehaviour
             }
             else
             {
-                warningDisplay.SetWarningMessage("Normal Mode Cant Exceuted, Total Player Must 3");
+                warningDisplay.SetWarningMessage("Three Player Mode Cant Exceuted, Total Player Must 3");
                 Debug.Log("Three Player Mode Cant Exceuted");
                 return;
             }
@@ -205,7 +205,7 @@ public class RoleDisplayMechanism : MonoBehaviour
             }
             else
             {
-                warningDisplay.SetWarningMessage("Normal Mode Cant Exceuted, Player Must More Than 5");
+                warningDisplay.SetWarningMessage("Additional Role Mode Cant Exceuted, Player Must More Than 5");
                 Debug.Log("Additional Mode Cant Exceuted");
                 return;
             }
@@ -222,7 +222,7 @@ public class RoleDisplayMechanism : MonoBehaviour
             }
             else
             {
-                warningDisplay.SetWarningMessage("Normal Mode Cant Exceuted, Player Must More than 3");
+                warningDisplay.SetWarningMessage("Master Pick Up Cant Exceuted, Player Must More than 3");
                 Debug.Log("Normal Mode Cant Exceuted");
                 return;
             }
@@ -262,7 +262,7 @@ public class RoleDisplayMechanism : MonoBehaviour
     {
         wordBoxPanel.SetActive(true);
 
-        altruisticWordIndo.text = "Altruisticnya adalah";
+        altruisticWordIndo.text = "Altruistic is";
         for(int i = 0; i < altruisticRoleMechanism.playerName.Count; i++)
         {
             if (altruisticRoleMechanism.characters[i].isAltruistic)

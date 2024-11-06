@@ -30,6 +30,7 @@ public class GameplayMechanism : MonoBehaviour
         gameplayScreen.SetActive(false);
         resultScreen.SetActive(true);
         timesupScreen.SetActive(true);
+        timerMechanism.timerIsRunning = false;
     }
 
     private void Update()
@@ -37,6 +38,7 @@ public class GameplayMechanism : MonoBehaviour
         if (timerMechanism.GetGameOver())
         {
             TimesUp();
+            timerMechanism.ResetGameOver();
         }
     }
 

@@ -17,3 +17,4 @@ MonoBehaviour:
   duration: 2-3'
   playerRequirement: 3-8
   nameScene: Guess the Word Scene
+  description: Try to guess as many words as possible before time runs out

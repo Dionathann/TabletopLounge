@@ -19,6 +19,8 @@ public class TheAgentGameplayMechanism : MonoBehaviour
 
     [SerializeField] TimerMechanism timerMechanism;
 
+    [SerializeField] GameObject gameplayScreen;
+
     private List<GameObject> locationDisplayerList = new List<GameObject>();
 
     public void Inizialize()
@@ -75,6 +77,8 @@ public class TheAgentGameplayMechanism : MonoBehaviour
         {
             theAgentVoteMechanism.AgentChooseLocation(isCorrectLocation);
         }
+
+        gameplayScreen.SetActive(false);
     }
     
     public void AgentReveal()

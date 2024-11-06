@@ -54,6 +54,7 @@ public class TheAgentRoleCardFlipper : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, i, 0f);
                 if (i == 90f)
                 {
+                    agentRoleDisplay.DisableMiddleIcon();
                     Card.sprite = agentRoleDisplay.backCard;
                 }
                 yield return new WaitForSeconds(0.01f);
@@ -67,6 +68,7 @@ public class TheAgentRoleCardFlipper : MonoBehaviour
 
     public void ForceFaceDownCard()
     {
+        agentRoleDisplay.DisableMiddleIcon();
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         facedUp = false;
     }

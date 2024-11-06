@@ -9,7 +9,7 @@ public class TimerMechanism : MonoBehaviour
     public bool timerIsRunning = false;
     public TextMeshProUGUI timeText;
 
-    private bool gameOver = false;
+     bool gameOver = false;
 
     [ContextMenu("Start Timer")]
     public void StartTimer()
@@ -46,6 +46,11 @@ public class TimerMechanism : MonoBehaviour
                 timerIsRunning = false;
             }
         }
+    }
+
+    public void ResetGameOver()
+    {
+        gameOver = false;
     }
 
     public bool GetGameOver()

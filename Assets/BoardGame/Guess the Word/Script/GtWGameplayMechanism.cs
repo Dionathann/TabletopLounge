@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GtWGameplayMechanism : MonoBehaviour
 {
@@ -15,9 +16,16 @@ public class GtWGameplayMechanism : MonoBehaviour
     [SerializeField] GameObject gameplayScreenPanel;
     [SerializeField] TextMeshProUGUI wordText;
 
+    [Header("Button References")]
+    [SerializeField] Button correctButton;
+    [SerializeField] Button skipButton;
+
     public List<string> tempShuffledWordList;
 
     private List<string> currentSessionPlayerList;
+
+    public AudioClip finishSound;
+    public AudioSource SFXSound;
 
     private int currentIndexPlayer;
 
@@ -26,6 +34,10 @@ public class GtWGameplayMechanism : MonoBehaviour
     private int skipCounter;
 
     private int currentWordIndex;
+
+    private bool isCorrectButtonHeld = false;
+
+    private bool isSkipButtonHeld = false;
 
     public void Inizialize()
     {
@@ -127,24 +139,56 @@ public class GtWGameplayMechanism : MonoBehaviour
         wordText.text = tempShuffledWordList[currentWordIndex];
     }
 
+    public void CorrectButtonPressed()
+    {
+        isCorrectButtonHeld = true;
+
+        skipButton.interactable = false;
+    }
+    public void SkipButtonPressed()
+    {
+        isSkipButtonHeld = true;
+
+        correctButton.interactable = false;
+    }
+
+    public void CorrectButtonReleased()
+    {
+        isCorrectButtonHeld = false;
+
+        skipButton.interactable = true;
+    }
+
+    public void SkipButtonReleased()
+    {
+        isSkipButtonHeld = false;
+
+        correctButton.interactable = true;
+    }
+
     public void CorrectButton()
     {
-        correctCounter++;
+        if (!isSkipButtonHeld)
+        {
+            correctCounter++;
 
-        currentWordIndex++;
+            currentWordIndex++;
 
-        DisplayNextWord();
+            DisplayNextWord();
+        }
     }
 
     public void SkipButton()
     {
-        skipCounter++;
+        if (!isCorrectButtonHeld)
+        {
+            skipCounter++;
 
-        currentWordIndex++;
+            currentWordIndex++;
 
-        DisplayNextWord();
+            DisplayNextWord();
+        }
     }
-
     public int GetCorrectWordCounter()
     {
         return correctCounter;
@@ -165,9 +209,9 @@ public class GtWGameplayMechanism : MonoBehaviour
         return currentSessionPlayerList[currentIndexPlayer];
     }
 
-    public int currentIndexPlayerIncrement()
+    public void CurrentIndexPlayerIncrement()
     {
-        return currentIndexPlayer++;
+        currentIndexPlayer++;
     }
 
     public bool IsGameOver()

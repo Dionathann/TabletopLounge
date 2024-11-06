@@ -113,7 +113,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 460.49, y: 100}
+  m_SizeDelta: {x: 460.49, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1216890108387547810
 CanvasRenderer:
@@ -308,7 +308,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -60, y: -20}
+  m_SizeDelta: {x: -60, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3991870109912515761
 CanvasRenderer:
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Darius Andana
+  m_text: Joseph Kristanto
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f4d91e42a2b4c6948be8c55fa0e44d1f, type: 2}
   m_sharedMaterial: {fileID: 1872663000048226141, guid: f4d91e42a2b4c6948be8c55fa0e44d1f, type: 2}
@@ -365,12 +365,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.6
+  m_fontSize: 47.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 18.5
+  m_fontSizeMax: 47.2
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

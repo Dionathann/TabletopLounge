@@ -9,6 +9,7 @@ public class GtWGameplayDisplay : MonoBehaviour
     [SerializeField] GtWGameplayMechanism gtwMechanism;
     [SerializeField] TotalPlayerHolder totalPlayerHolder;
     [SerializeField] WarningDisplay warningDisplay;
+    [SerializeField] ScreenOrientation screenOrientation;
     private int currentPlayerIndex;
 
     [Header("UI Reference")]
@@ -23,6 +24,8 @@ public class GtWGameplayDisplay : MonoBehaviour
             warningDisplay.SetWarningMessage("Player Must More Than 2");
             return;
         }
+
+        screenOrientation.ToggleOrientation();
 
         gameConfigUI.SetActive(false);
 
@@ -39,6 +42,6 @@ public class GtWGameplayDisplay : MonoBehaviour
 
         currentPlayerIndex = gtwMechanism.GetIndexPlayer();
 
-        thisTurnPlayerName.text = ("Now It's " + list[currentPlayerIndex] + "'s Turn");
+        thisTurnPlayerName.text = (list[currentPlayerIndex] + " Will be the Guesser");
     }
 }

@@ -38,8 +38,6 @@ public class IcognitoRoleDisplay : MonoBehaviour
 
         bool isPassed = icognitoRoleMechanism.PlayerCheck();
 
-        Debug.Log(isPassed);
-
         if (isPassed == false)
         {
             Debug.Log("Fail Inizialize");

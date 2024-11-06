@@ -17,3 +17,5 @@ MonoBehaviour:
   duration: 15'
   playerRequirement: 3-8
   nameScene: Altruistic Scene
+  description: Social deduction game where players guess a secret word while trying
+    to uncover the hidden Altruistic guiding them.

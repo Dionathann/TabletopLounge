@@ -14,6 +14,21 @@ public class TutorialHandler : MonoBehaviour
 
     private void OnEnable()
     {
+        tutorialPages[pageIndex].SetActive(true);
+        ResetIndex();
+    }
+
+    private void OnDisable()
+    {
+        foreach (GameObject page in tutorialPages)
+        {
+            page.SetActive(false);
+        }
+        ResetIndex();
+    }
+
+    public void ResetIndex()
+    {
         pageIndex = 0;
     }
 

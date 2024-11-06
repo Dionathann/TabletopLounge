@@ -25,6 +25,11 @@ public class VotingSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI notAltruisticVotedText;
     [SerializeField] Image notAltruisticVotedImage;
 
+    [Header("Three Player Mode Result")]
+    [SerializeField] GameObject threePlayerResultScreen;
+    [SerializeField] TextMeshProUGUI threePlayerResultText;
+
+
     [Header("Asset Icons")]
     public Sprite altruisticIcon;
     public Sprite ordinaryIcon;
@@ -35,31 +40,41 @@ public class VotingSystem : MonoBehaviour
     [ContextMenu("Initial Vote System")]
     public void InitialVoteSystem()
     {
-        foreach(GameObject obj in voteDisplayers)
+        if(altruisticRoleMechanism.GetDropDown().value == 1)
         {
-            Destroy(obj);
-        }
-
-        voteDisplayers.Clear();
-
-        if(altruisticRoleMechanism.GetDropDown().value == 3)
-        {
-            for (int i = 1; i < altruisticRoleMechanism.playerName.Count; i++)
-            {
-                DisplayName(altruisticRoleMechanism.characters[i].name, i);
-            }
+            Debug.Log("three player Mode result");
+            ThreePlayerOnlyResult();
         }
         else
         {
-            for (int i = 0; i < altruisticRoleMechanism.playerName.Count; i++)
+            threePlayerResultScreen.SetActive(false);
+
+            foreach (GameObject obj in voteDisplayers)
             {
-                if (!altruisticRoleMechanism.characters[i].isMaster)
+                Destroy(obj);
+            }
+
+            voteDisplayers.Clear();
+
+            if(altruisticRoleMechanism.GetDropDown().value == 3)
+            {
+                for (int i = 1; i < altruisticRoleMechanism.playerName.Count; i++)
                 {
                     DisplayName(altruisticRoleMechanism.characters[i].name, i);
                 }
             }
+            else
+            {
+                for (int i = 0; i < altruisticRoleMechanism.playerName.Count; i++)
+                {
+                    if (!altruisticRoleMechanism.characters[i].isMaster)
+                    {
+                        DisplayName(altruisticRoleMechanism.characters[i].name, i);
+                    }
+                }
+            }
+            voteScreen.SetActive(true);
         }
-        
     }
 
     private void DisplayName(string name, int index)
@@ -165,6 +180,15 @@ public class VotingSystem : MonoBehaviour
         {
             SceneManager.LoadScene(sceneName);
         }
+    }
+
+    public void ThreePlayerOnlyResult()
+    {
+        resultScreen.SetActive(true);
+
+        threePlayerResultScreen.SetActive(true);
+
+        threePlayerResultText.text = "The Guess is Correct! Everyone Win the Game!";
     }
 }
 

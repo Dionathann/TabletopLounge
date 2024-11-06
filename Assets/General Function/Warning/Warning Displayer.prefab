@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warningPanel: {fileID: 0}
   warningMessage: {fileID: 0}
-  fadeOutTime: 4
-  displayTime: 0
+  fadeOutTime: 2
+  displayTime: 2

@@ -17,3 +17,4 @@ MonoBehaviour:
   duration: 1''
   playerRequirement: 2-8
   nameScene: Decider Scene
+  description: Choose Player or Divide by Group

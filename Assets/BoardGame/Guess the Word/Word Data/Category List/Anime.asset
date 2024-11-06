@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   categoryName: Anime
   wordList: []
-  description: You can describe the plot, sing the opening, to make it more difficult
+  description: You can describe the plot or sing the opening, to make it more difficult
     don't say character name.

@@ -53,6 +53,7 @@ public class NameHolder : MonoBehaviour
 
         if(string.IsNullOrEmpty(inputField.text))
         {
+            Handheld.Vibrate();
             warningDisplay.SetWarningMessage("Input Can't be Empty");
             return;
         }
@@ -65,8 +66,8 @@ public class NameHolder : MonoBehaviour
             {
                 if (playerNameList.Contains(inputFieldText))
                 {
+                    Handheld.Vibrate();
                     warningDisplay.SetWarningMessage("Name Already Exist");
-                    Debug.Log("Name Already Exist");
                     return;
                 }
                 else
@@ -78,6 +79,11 @@ public class NameHolder : MonoBehaviour
                     totalPlayerHolder.PlayerIncrement();
                 }
             }
+        }
+        else
+        {
+            Handheld.Vibrate();
+            warningDisplay.SetWarningMessage("Max Player Reached");
         }
         
         inputField.text = string.Empty;

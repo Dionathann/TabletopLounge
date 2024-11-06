@@ -13,4 +13,7 @@ public class BoardGameData : ScriptableObject
     public string playerRequirement;
     public string nameScene;
 
+    [TextArea(2, 4)]
+    public string description;
+
 }
