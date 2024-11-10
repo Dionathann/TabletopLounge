@@ -211,7 +211,15 @@ public class GtWGameplayMechanism : MonoBehaviour
 
     public void CurrentIndexPlayerIncrement()
     {
-        currentIndexPlayer++;
+        if(currentIndexPlayer == currentSessionPlayerList.Count - 1)
+        {
+            currentIndexPlayer = 0;
+        }
+        else
+        {
+            currentIndexPlayer++;
+        }
+
     }
 
     public bool IsGameOver()

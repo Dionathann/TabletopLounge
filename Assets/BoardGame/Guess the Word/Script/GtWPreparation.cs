@@ -23,11 +23,11 @@ public class GtWPreparation : MonoBehaviour
 
         mainText.text = "Put Your Phone On Your Head";
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
 
         mainText.text = "Get Ready...";
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         for (int i = 3; i > 0; i--)
         {
