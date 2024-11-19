@@ -21,12 +21,19 @@ public class TheAgentRoleDisplay : MonoBehaviour
     [SerializeField] GameObject gameConfigurationCanvasPrefab;
     [SerializeField] GameObject roleDisplayAgentPrefab;
     [SerializeField] Image roleCardImage;
-    [SerializeField] Image middleIcon;
     public Button nextButton;
     [SerializeField] GameObject confirmationScreen;
     [SerializeField] GameObject confirmationPanel;
     [SerializeField] TextMeshProUGUI confirmationPlayerName;
     [SerializeField] TextMeshProUGUI topTextPlayer;
+
+    [Header("Agent Role Display")]
+    public GameObject agentImageCard;
+
+    [Header("Location Display")]
+    public GameObject locationHolder;
+    [SerializeField] Image middleIcon;
+    public TextMeshProUGUI imageLocationName;
 
     private bool gameModeCheck;
     private List<Sprite> copySprite = new List<Sprite>();
@@ -66,6 +73,8 @@ public class TheAgentRoleDisplay : MonoBehaviour
 
         roleCardImage.sprite = backCard;
 
+        agentImageCard.SetActive(false);
+
         nextButton.interactable = false;
 
         ShowPlayerConfirmation();
@@ -104,6 +113,8 @@ public class TheAgentRoleDisplay : MonoBehaviour
 
         roleCardImage.sprite = backCard;
 
+        agentImageCard.SetActive(false);
+        
         ShowPlayerConfirmation();
     }
 
@@ -112,14 +123,19 @@ public class TheAgentRoleDisplay : MonoBehaviour
         if (agentRoleMechanism.playerRole[index].isAgent)
         {
             DisableMiddleIcon();
-            roleCardImage.sprite = agentRoleCard;
+            agentImageCard.SetActive(true);
+            locationHolder.SetActive(false);
+            agentImageCard.GetComponent<Image>().sprite = agentRoleCard;
         }
         else
         {
             EnableMiddleIcon();
-
-            roleCardImage.sprite = null;
+            agentImageCard.SetActive(false);
+            locationHolder.SetActive(true);
+            //roleCardImage.sprite = null;
             middleIcon.sprite = agentRoleMechanism.GetShuffledLocation()[agentRoleMechanism.currentLocationIndex];
+            imageLocationName.text = agentRoleMechanism.GetCurrentLocationName();
+            imageLocationName.gameObject.SetActive(true);
         }
 
     }
@@ -137,6 +153,8 @@ public class TheAgentRoleDisplay : MonoBehaviour
         gameModeCheck = true;
     }
 
+
+
     public int GetCurrentIndexPlayer()
     {
         return currentIndexPlayer;
@@ -149,5 +167,10 @@ public class TheAgentRoleDisplay : MonoBehaviour
     public void EnableMiddleIcon()
     {
         middleIcon.gameObject.SetActive(true);
+    }
+
+    public string GetCurrentLocationName()
+    {
+        return agentRoleMechanism.GetCurrentLocationName();
     }
 }

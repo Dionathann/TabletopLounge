@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,7 +45,11 @@ public class TheAgentGameplayMechanism : MonoBehaviour
         {
             GameObject newImage = Instantiate(imagePrefab, gridTransform);
 
-            newImage.GetComponent<Image>().sprite = agentRoleMechanism.GetShuffledLocation()[i];
+            Transform childImage = newImage.transform.Find("ChildImageName");
+
+            childImage.GetComponent<Image>().sprite = agentRoleMechanism.GetShuffledLocation()[i];
+
+            newImage.GetComponentInChildren<TextMeshProUGUI>().text = agentRoleMechanism.GetShuffledLocation()[i].name;
 
             GridIndex imageIndex = newImage.AddComponent<GridIndex>();
 

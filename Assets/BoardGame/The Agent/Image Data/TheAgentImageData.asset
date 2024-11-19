@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a6b2e90aec88141a0c8e3b72c26677, type: 3}
   m_Name: TheAgentImageData
   m_EditorClassIdentifier: 
-  categoryImage: {fileID: 0}
   imageLocation:
   - {fileID: 21300000, guid: ef3267d25e90b61458e0f7258bb11d09, type: 3}
   - {fileID: 21300000, guid: baf467f03ae9e4546802ff31a19117f8, type: 3}
@@ -39,3 +38,29 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b7fb5a58d815ce44eba20dc7f004761b, type: 3}
   - {fileID: 21300000, guid: a6731579c0a33654c9be1ba593d055fe, type: 3}
   - {fileID: 21300000, guid: b4699ebaa76251a4f9919c99eef739e7, type: 3}
+  locationName:
+  - Airport
+  - Bank
+  - Bus Station
+  - Carnival
+  - Castle
+  - Cemetery
+  - Coffee Shop
+  - Concert
+  - Construction Site
+  - Court
+  - Factory
+  - Farm
+  - Fire Station
+  - Gas Station
+  - Gold Mine
+  - Hospital
+  - Hotel
+  - Jail
+  - Library
+  - Museum
+  - Pharmacy
+  - Post Office
+  - Science Lab
+  - Stadium
+  - University

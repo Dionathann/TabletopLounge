@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class TheAgentRoleCardFlipper : MonoBehaviour
 {
     private Image Card;
     public TheAgentRoleDisplay agentRoleDisplay;
+    public Sprite frontFaceCard;
+    public TextMeshProUGUI locationText;
     //private Sprite faceSprite, backSprite;
 
     private bool coroutineAllowed, facedUp;
@@ -41,7 +44,7 @@ public class TheAgentRoleCardFlipper : MonoBehaviour
                 {
                     agentRoleDisplay.GetPlayerRole(agentRoleDisplay.GetCurrentIndexPlayer());
                     agentRoleDisplay.nextButton.interactable = true;
-                    //rend.sprite = faceSprite;
+                    Card.sprite = frontFaceCard;
                 }
                 yield return new WaitForSeconds(0.01f);
             }
@@ -55,6 +58,11 @@ public class TheAgentRoleCardFlipper : MonoBehaviour
                 if (i == 90f)
                 {
                     agentRoleDisplay.DisableMiddleIcon();
+
+                    agentRoleDisplay.locationHolder.SetActive(false);
+                    agentRoleDisplay.agentImageCard.SetActive(false);
+                    agentRoleDisplay.imageLocationName.gameObject.SetActive(false);
+
                     Card.sprite = agentRoleDisplay.backCard;
                 }
                 yield return new WaitForSeconds(0.01f);
@@ -68,6 +76,7 @@ public class TheAgentRoleCardFlipper : MonoBehaviour
 
     public void ForceFaceDownCard()
     {
+        locationText.gameObject.SetActive(false);
         agentRoleDisplay.DisableMiddleIcon();
         transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         facedUp = false;

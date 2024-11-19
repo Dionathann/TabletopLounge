@@ -105,6 +105,11 @@ public class TheAgentRoleMechanism : MonoBehaviour
         return inizializeLocation.shuffledLocationList;
     }
 
+    public string GetCurrentLocationName()
+    {
+        return inizializeLocation.shuffledLocationNames[currentLocationIndex];
+    }
+
     public Sprite GetCurrentLocation()
     {
         return inizializeLocation.shuffledLocationList[currentLocationIndex];
