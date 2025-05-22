@@ -17,68 +17,118 @@ public class WordData : ScriptableObject
     public void AddWordsManually()
     {
         wordsListIndonesia.AddRange(new List<string> {
-        "Apel", "Bola", "Cinta", "Dunia", "Elang", "Fisik", "Gajah", "Hutan", "Ikan", "Jalan",
+            //buah
+            "Apel", "Pisang", "Jeruk", "Mangga", "Anggur",
+            "Nanas", "Semangka", "Melon", "Strawberi", "Kiwi",
 
-        "Kuda", "Laut", "Matahari", "Naga", "Ombak", "Pohon", "Rumah", "Sungai", "Taman", "Ular",
+            //sayur
+            "Wortel", "Bayam", "Kangkung", "Brokoli", "Kubis",
+            "Timun", "Tomat", "Terong", "Buncis", "Labu",
 
-        "Vas", "Warna", "Xilofon", "Yakin", "Zebra", "Anjing", "Bulan", "Cerah", "Damai", "Emas",
+            //kendaraan
+            "Mobil", "Motor", "Sepeda", "Bus", "Truk",
+            "Kereta", "Kuda", "Kapal", "Helikopter", "Sepeda Roda 1",
 
-        "Fantasi", "Garam", "Harapan", "Ilusi", "Jendela", "Kaki", "Lilin", "Mentari", "Nanas", "Orang",
+            //animal
+            "Gajah", "Elang", "Ular", "Kangguru", "Ikan",
+            "Kura-kura", "Kelelawar", "Gurita", "Kucing", "Semut",
 
-        "Perahu", "Raja", "Ratu", "Sapi", "Tarian", "Uang", "Warna-Warni", "X-Ray", "Yoyo", "Zaitun",
+            //tempat
+            "Gunung", "Pantai", "Hutan", "Pasar", "Sekolah",
+            "Bandara", "Desa", "Kota", "Gurun", "Kutub Utara",
 
-        "Awan", "Bintang", "Cahaya", "Doa", "Egois", "Fauna", "Gitar", "Hari", "Indah", "Jari", 
-            
-        "Kaca", "Lampu", "Merah", "Nasi", "Otak", "Pintu", "Permainan", "Rumput", "Sinar", "Tubuh",
-        
-        "Udara", "Ventilasi", "Waktu", "Dompet", "Ambulans", "Zodiak", "Ayah", "Belajar", "Cita-Cita", "Dosen",
-            
-        "Edukasi", "Film", "Guru", "Hidup", "Ilmu", "Jembatan", "Kasih", "LautBiru", "Musik", "Negeri",
-            
-        "OrangTua", "Pahlawan", "Kabel", "RumahSakit", "Senyum", "Teman", "Universitas", "Vokal", "Warna Dasar", "Tikus",
-            
-        "Keyboard", "Poster", "Air", "Berani", "Cahaya", "Damai", "Energi", "Fiksi", "Gelas", "Harimau",
-            
-        "Indera", "Jatuh", "Kasur", "Lembut", "Mimpi", "Nasib", "Orkestra", "Pesawat", "Kereta", "Robot",
-            
-        "Gunung", "Tenda", "Sikat Gigi", "Vaksin", "Wajah", "Komik", "Yakin", "Tas", "Angin", "Bunga",
-            
-        "Cerita", "Astronot", "Elektron", "Oksigen", "Gembira", "Youtube", "Ide", "Jemari", "Keajaiban", "Lagu",
-        
-        "Mata", "Benua", "Gravitasi", "Polusi", "Rasa", "Senja", "Hip-Hop", "Uang", "Programmer", "Novel"
-        
+            //
+            "Dokter", "Petani", "Pilot", "Guru", "Pemadam Kebakaran",
+            "Programmer", "Seniman", "Pengacara", "Koki", "Astronot",
+
+            //
+            "Tsunami", "Hujan", "Badai", "Salju", "Gempa Bumi",
+            "Angin Topan", "Kekeringan", "Letusan Gunung", "Kabut", "Pelangi",
+
+            //
+            "Rumah Sakit", "Sekolah", "Bandara", "Universitas", "Stasiun",
+            "Perpustakaan", "Kantor Polisi", "Taman", "Mall", "Museum",
+
+            //
+            "Monitor", "Keyboard", "Mouse", "Internet", "Printer",
+            "Scanner", "Speaker", "Webcam", "Harddisk", "Motherboard",
+
+            //
+            "Air Putih", "Teh", "Kopi", "Jus Jeruk", "Susu",
+            "Soda", "Sirup", "Es Kelapa", "Cokelat Panas", "Lemon Tea",
+
+            //
+            "Gitar", "Piano", "Drum", "Biola", "Saxofon",
+            "Flute", "Terompet", "Harmonika", "Bass", "Tamborin",
+
+            //
+            "Mawar", "Melati", "Kaktus", "Bambu", "Padi",
+            "Teratai", "Anggrek", "Lidah Buaya", "Pohon Beringin", "Rumput",
+
+            //
+            "Kursi", "Meja", "Kasur", "Kipas", "Lemari",
+            "Lampu", "TV", "Kulkas", "Kompor", "Jam Dinding",
+
+            "Menara Eiffel", "Tembok Besar Cina", "Piramida Giza", "Patung Liberty", "Menara Pisa",
+            "Colosseum", "Taj Mahal", "Machu Picchu", "Gunung Fuji", "Air Terjun Niagara"
         });
 
         wordsListEnglish.AddRange(new List<string> {
-        "Apple", "Ball", "Love", "World", "Eagle", "Physique", "Elephant", "Forest", "Fish", "Road",
-            
-        "Horse", "Ocean", "Sun", "Dragon", "Wave", "Tree", "House", "River", "Garden", "Snake",
-            
-        "Vase", "Color", "Xylophone", "Sure", "Zebra", "Dog", "Moon", "Bright", "Peace", "Gold",
+            //buah
+            "Apple", "Banana", "Orange", "Mango", "Grape",
+            "Pineapple", "Watermelon", "Melon", "Strawberry", "Kiwi",
 
-        "Fantasy", "Salt", "Hope", "Illusion", "Window", "Foot", "Candle", "Sunshine", "Pineapple", "Person",
-            
-        "Boat", "King", "Queen", "Cow", "Dance", "Money", "Colorful", "X-Ray", "YoYo", "Olive",
-            
-        "Cloud", "Star", "Light", "Prayer", "Selfish", "Fauna", "Guitar", "Day", "Beautiful", "Finger",
+            //sayur
+            "Carrot", "Spinach", "Water Spinach", "Broccoli", "Cabbage",
+            "Cucumber", "Tomato", "Eggplant", "Green Beans", "Pumpkin",
 
-        "Glass", "Lamp", "Red", "Rice", "Brain", "Door", "Game", "Grass", "Ray", "Body",
+            //kendaraan
+            "Car", "Motorcycle", "Bicycle", "Bus", "Truck",
+            "Train", "Airplane", "Ship", "Helicopter", "Unicycle",
 
-        "Air", "Ventilation", "Time", "Wallet", "Ambulance", "Zodiac", "Father", "Study", "Goal", "Teacher",
-            
-        "Education", "Movie", "Teacher", "Life", "Science", "Bridge", "Love", "BlueSea", "Music", "Country",
-            
-        "Parent", "Hero", "Cable", "Hospital", "Smile", "Friend", "University", "Vocal", "PrimaryColor", "Mouse",
+            //animal
+            "Elephant", "Eagle", "Snake", "Kangaroo", "Whale",
+            "Turtle", "Bat", "Octopus", "Cat", "Ant",
 
-        "Keyboard", "Poster", "Water", "Brave", "Light", "Peace", "Energy", "Fiction", "Glass", "Tiger",
-            
-        "Senses", "Fall", "Bed", "Soft", "Dream", "Destiny", "Orchestra", "Airplane", "Train", "Robot",
-            
-        "Mountain", "Tent", "Tooth Brush", "Vaccine", "Face", "Comic", "Sure", "Bag", "Wind", "Flower",
-            
-        "Story", "Astronaut", "Electron", "Oxygen", "Joy", "Youtube", "Idea", "Fingers", "Miracle", "Song",
+            //Tempat
+            "Mountain", "Beach", "Forest", "Market", "School",
+            "Airport", "Village", "City", "Desert", "North Pole",
 
-        "Eye", "Continent", "Gravity", "Polution", "Taste", "Sunset", "Hip-Hop", "Money", "Programmer", "Novel"
-});
+            //
+            "Doctor", "Farmer", "Pilot", "Teacher", "Firefighter",
+            "Programmer", "Artist", "Lawyer", "Chef", "Astronaut",
+            
+            //
+            "Tsunami", "Rain", "Storm", "Snow", "Earthquake",
+            "Hurricane", "Drought", "Volcanic Eruption", "Fog", "Rainbow",
+
+            //
+            "Hospital", "School", "Airport", "University", "Train Station",
+            "Library", "Police Station", "Park", "Mall", "Museum",
+
+            //
+            "Monitor", "Keyboard", "Mouse", "Internet", "Printer",
+            "Scanner", "Speaker", "Webcam", "Hard Drive", "Motherboard",
+
+            //
+            "Water", "Tea", "Coffee", "Orange Juice", "Milk",
+            "Soda", "Syrup", "Coconut Ice", "Hot Chocolate", "Lemon Tea",
+
+            //
+            "Guitar", "Piano", "Drums", "Violin", "Saxophone",
+            "Flute", "Trumpet", "Harmonica", "Bass", "Tambourine",
+
+            //
+            "Rose", "Jasmine", "Cactus", "Bamboo", "Rice",
+            "Lotus", "Orchid", "Aloe Vera", "Banyan Tree", "Grass",
+
+            //
+            "Chair", "Table", "Mattress", "Fan", "Wardrobe",
+            "Lamp", "TV", "Fridge", "Stove", "Wall Clock",
+
+            //
+            "Eiffel Tower", "Great Wall of China", "Pyramids of Giza", "Statue of Liberty", "Leaning Tower of Pisa",
+            "Colosseum", "Taj Mahal", "Machu Picchu", "Mount Fuji", "Niagara Falls"
+        });
     }
 }
